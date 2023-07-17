@@ -1,0 +1,1619 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to scientific computing with Python &#8212; Data Analysis of Earth Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '20221024_FUN02';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction to scientific computing with Python" href="20221107_FUN04_real.html" />
+    <link rel="prev" title="Introduction to scientific computing with Python" href="pythonFUN_01.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    這是個測試。
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pythonFUN_01.html">Introduction to scientific computing with Python</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to scientific computing with Python</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="20221107_FUN04_real.html">Introduction to scientific computing with Python</a></li>
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/pyrox-shin/da-es-work/HEAD/v2/gh/pyrox-shin/Data Analysis of Earth Science/main?urlpath=tree/docs/20221024_FUN02.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pyrox-shin/Data Analysis of Earth Science" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pyrox-shin/Data Analysis of Earth Science/issues/new?title=Issue%20on%20page%20%2F20221024_FUN02.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/20221024_FUN02.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to scientific computing with Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction to scientific computing with Python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matlabplot-ploting-several-panels-in-figure">(1) matlabplot: ploting several panels in figure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-random-random-generaters">(2) numpy.random: random generaters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-loadtxt-read-data-as-an-array-read-files-way-1">(3) numpy.loadtxt: read data as an array (read files way #1)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources">Sources</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#one-of-python-interpreters">One of Python interpreters 編譯器:</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-in-jupyter-lab">Notebook in jupyter-lab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-the-jupyter-notebook-in-jupyter-lab">NOTE: the Jupyter notebook in Jupyter Lab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-800000-recap-variable-assignments-font"><font color="#800000"> RECAP: variable assignments 變數設定 </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#display-print">如果你想要display你設的變數，看看有無成功，可以用print這個指令</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-2show"><font color="#ff00ff"> Your turn: </font> 請把剛剛那2個變數show出來</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#try-font-color-ff00ff-tab-font-that-cell-toolbar">try <font color="#ff00ff"> tab </font> that 變數名稱會自行帶入 cell-toolbar外掛</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-daef4d92-5a17-40e2-a1d6-08a5fd246f28-png-width-60px-or"><img src="attachment:daef4d92-5a17-40e2-a1d6-08a5fd246f28.png" width="60px"/> 如果想知道這個變數是整數，實數, 虛數 or 字串，請問下什麼指令？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-operator">Assignment operator  指定運算子</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-x-2"><font color="#ff00ff"> Your turn: </font> 請試試看 x/=2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#import-a-module-in-python">Import a module 新增模組 in python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-800000-recap-1-numpy-font-multidimensional-data-arrays"><font color="#800000"> RECAP 模組#1 numpy  </font> - multidimensional data arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-6d995bdc-f9aa-4676-9cb5-6808282bf5f3-png-width-60px-we-need-to-use-numpy-how-can-we-import-the-module-as-np"><img src="attachment:6d995bdc-f9aa-4676-9cb5-6808282bf5f3.png" width="60px"/>  we need to use numpy , how can we import the module as np?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-numpy-arrays">Creating <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-numpy-array-from-lists">(1) create a numpy array from lists</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-numpy-array-from-array-generating-functions">(2) create a numpy array from array-generating functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arange">* arange</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-np-arange-tt-numpy-array-a-11-0-11"><font color="#ff00ff"> Your turn: </font> 請試試看用 np.arange 一個變數名為, tt, 的numpy array A 從-1到1，間隔0.1。這次我希望包含1，你會怎做？</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linspace">* linspace</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-np-linspacexx-numpy-array-b-11-20"><font color="#ff00ff"> Your turn: </font> 請試試看用 np.linspace一個變數名為xx的 numpy array B 從-1到1，共20個數值。</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font"><font color="#ff00ff"> Your turn: </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-we-wanna-plot-x-and-y-we-need-another-module-matplotlib">NOW, we wanna PLOT x and y, we need another module (模組), <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Import a module 新增模組 in python</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-2d-and-3d-plotting-in-python"><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> - 2D and 3D plotting in Python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Import a module 新增模組 in python</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-pyplot"><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> 中的 pyplot</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-pyplotplot">matplotlib.pyplot——plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-pyplot-plot-args-kwargs-plot-lines-and-or-markers-to-the-axes">matplotlib.pyplot.plot(*args, **kwargs): Plot lines and/or markers to the Axes.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-pyplotsubplot-matplotlibsubplot">matplotlib.pyplot——subplot; matplotlib繪製多個子圖——subplot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-pyplot-subplots-nrows-1-ncols-1-sharex-false-sharey-false-squeeze-true-subplot-kw-none-gridspec-kw-none-fig-kw">* matplotlib.pyplot.subplots(nrows=1, ncols=1, sharex=False, sharey=False, squeeze=True, subplot_kw=None, gridspec_kw=None, **fig_kw)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-size-aspect-ratio-and-dpi">* Figure size, aspect ratio and DPI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-674ea7-my-favorite-way-is-subplots-which-can-be-used-like-this"><font color="#674ea7"> My favorite way is <code class="docutils literal notranslate"><span class="pre">subplots</span></code>, which can be used like this:</font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-674ea7-fig-ax-plt-subplots-nrows-1-ncols-1-figsize-5-5"><font color="#674ea7"> fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(5,5))</font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xx-yy-latex">添加x軸名稱「x」，y軸標籤為「y」，圖標題為以數學公式(LaTeX)表示</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-pyplot-save-figures">matplotlib.pyplot: save figures</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ee7700-in-calss-quiz-font-plot-the-normal-distribution-function-15-pm-5-mins"><font color="#EE7700"> In-calss QUIZ: </font> plot the normal distribution function ( 15 <span class="math notranslate nohighlight">\(\pm\)</span> 5  mins)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x-numpy-array-x1036-100">* 因為是個連續函數，所以你要自己先產生一個 變數 x 的numpy array, 這裡我們假設x從10到36，共100數值。</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mu-23-2-sigma-4">* 必要參數先假設，這裡我們假設 (1)變數 <span class="math notranslate nohighlight">\(\mu=23\)</span> &amp; (2)變數<span class="math notranslate nohighlight">\(\sigma = 4\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-distribution-function-array-p">* 請你根據normal distribution function 數學式產生一個array, P</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-ax-plt-subplots-1-1-figsize-8-5-p-as-function-of-x">* 用<code class="docutils literal notranslate"><span class="pre">fig,</span> <span class="pre">ax</span> <span class="pre">=</span> <span class="pre">plt.subplots(1,1,figsize=(8,5))</span></code> 開一張圖，然後畫P as function of x</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x-p-x-title-normal-pdf">* 橫軸標上 x， 縱軸標上 p(x)，圖的title 給 “normal PDF”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-your-figure-to-a-pdf-file-please-set-filename-as-20221024-quiz-yourname-pdf-sumbit-it-to-moodle-system">* save your figure to a pdf file, please set filename as 20221024_Quiz_yourname.pdf, sumbit it to moodle system</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#colors-in-default-property-cycle">Colors in default property cycle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-colors">Setting colors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#line-and-marker-styles-practice">Line and marker styles practice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-random-data">Numpy: Random data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-sampling-numpy-random">Random sampling (numpy.random)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-random-randint-low-high-size">* numpy.random.randint(low, high,size)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-get-mean-and-standard-deviation">numpy: get mean and standard deviation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-mean-a-axis-none-dtype-none">* numpy.mean(a, axis=None, dtype=None)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#way-1">way #1:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-way-2-mean2-randomarray1-mean"><font color="#ff00ff"> Your turn: </font> way #2: 請試看看設一個新的變數, mean2 = randomArray1.mean()</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-std-a-axis-none-dtype-none-ddof-0">* numpy.std(a, axis=None, dtype=None, ddof=0)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hint-randomarray1-tab"><code class="docutils literal notranslate"><span class="pre">hint</span> <span class="pre">你可以試看看</span> <span class="pre">randomArray1.[tab]</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ee7700-in-calss-exercise-font-numpy-random-randint-low-high-size-random-numpy-array-mean-standard-deviation"><font color="#EE7700"> In-calss exercise: </font> 利用<code class="docutils literal notranslate"><span class="pre">numpy.random.randint(low,</span> <span class="pre">high,size)</span></code>產生一個random numpy array，計算其mean 與 standard deviation, 找到最大值與最小值</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-array-b-random40-2-520-3-1000">* 產生一個numpy array, B,讓他random的從40.2~ 520.3，取1000個。</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meanbmean-std-bstd">* mean的變數設為Bmean, std 的變數設為 Bstd</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-array-bmax-bmin">* B array 中最大值設為Bmax, 最小值設為Bmin</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-pyplot-plot-histogram">matplotlib.pyplot: plot histogram</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#n-bins-patches-plt-hist-x-bins-none-density-false-color-none">*  n, bins, patches = plt.hist (x, bins=None,density=False,color=None)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-set-density-true-counts-normalized-len-bins-to-form-a-probability-density"><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">set</span> <span class="pre">density=True</span></code> , counts normalized len(bins) to form a probability density</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-density-true"><font color="#ff00ff"> Your turn: </font> 把density參數，設為 True，再畫一次。</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#np-random-randn-size">* np.random.randn(size) 依照常態分佈趨勢產生隨機數</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#np-loadtxt">np.loadtxt</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">讀檔 way#1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">語法-</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-loadtxt-fname-comments-skiprows-0-usecols-none-unpack-false-delimiter-none">numpy.loadtxt(fname, comments=’#’, skiprows=0, usecols=None, unpack=False,delimiter=None)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options">Options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">變數</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-score-d-numpy-arrray-grade"><font color="#ff00ff"> Your turn: </font> 請試看看讀score.d檔，將所以數據設成一個numpy arrray，取名為grade</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grade-np-loadtxt-score-d-unpack-true">指令為 grade = np.loadtxt(‘./score.d’, unpack=True )</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-scientific-computing-with-python">
+<h1>Introduction to scientific computing with Python<a class="headerlink" href="#introduction-to-scientific-computing-with-python" title="Permalink to this heading">#</a></h1>
+<section id="matlabplot-ploting-several-panels-in-figure">
+<h2>(1) matlabplot: ploting several panels in figure<a class="headerlink" href="#matlabplot-ploting-several-panels-in-figure" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="numpy-random-random-generaters">
+<h2>(2) numpy.random: random generaters<a class="headerlink" href="#numpy-random-random-generaters" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="numpy-loadtxt-read-data-as-an-array-read-files-way-1">
+<h2>(3) numpy.loadtxt: read data as an array (read files way #1)<a class="headerlink" href="#numpy-loadtxt-read-data-as-an-array-read-files-way-1" title="Permalink to this heading">#</a></h2>
+<p>by pylin.patty 2022/10/21, 2021/11/13, 2020/10/26</p>
+</section>
+<section id="sources">
+<h2>Sources<a class="headerlink" href="#sources" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="github reference external" href="http://github.com/jrjohansson/scientific-python-lectures">jrjohansson/scientific-python-lectures</a></p></li>
+<li><p><a class="github reference external" href="https://github.com/rajathkmp/Python-Lectures/">rajathkmp/Python-Lectures</a></p></li>
+<li><p><a class="reference external" href="https://www.itread01.com/study/python3-basic-syntax.html">https://www.itread01.com/study/python3-basic-syntax.html</a></p></li>
+<li><p><a class="reference external" href="https://www.toodoo.com/db/color.html">https://www.toodoo.com/db/color.html</a></p></li>
+<li><p><a class="reference external" href="http://homepage.ntu.edu.tw/~weitingc/fortran_lecture/Lecture_P_2_Numpy_FileIO.slides.html">http://homepage.ntu.edu.tw/~weitingc/fortran_lecture/Lecture_P_2_Numpy_FileIO.slides.html</a></p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="one-of-python-interpreters">
+<h1>One of Python interpreters 編譯器:<a class="headerlink" href="#one-of-python-interpreters" title="Permalink to this heading">#</a></h1>
+<section id="notebook-in-jupyter-lab">
+<h2>Notebook in jupyter-lab<a class="headerlink" href="#notebook-in-jupyter-lab" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/stable/">Jupyter notebook</a> is an HTML-based notebook environment for Python, similar to Mathematica or Maple. It is based on the IPython shell, but provides a cell-based environment with great interactivity, where calculations can be organized and documented in a structured way.</p>
+<p>建構於網頁應用程式的整合開發環境，可以邊做筆記邊撰寫程式、顯示程式輸出、圖形視覺化輸出、支援 Markdown 標記語言與 LaTex 數學方程式的文字段落。</p>
+</section>
+<section id="note-the-jupyter-notebook-in-jupyter-lab">
+<h2>NOTE: the Jupyter notebook in Jupyter Lab<a class="headerlink" href="#note-the-jupyter-notebook-in-jupyter-lab" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong><font color=#03bafc> Ctrl-Enter</strong>  : run cell  執行這個cell</font></p></li>
+<li><p><strong>Shift-Enter</strong> : run cell, select below</p></li>
+<li><p><strong>Tab</strong>         : code completion or indent</p></li>
+<li><p><strong><font color=#03bafc> 執行過那個cell，每個Cell 前面會出現數字 </font></strong></p></li>
+<li><p>you can also install Jupyter Lab extension (外掛) - ex: cell-toolbar</p></li>
+</ul>
+<img src="attachment:ff6edb33-78a6-49c8-ae46-a61fea510055.png" width="500"> 
+</section>
+<section id="font-color-800000-recap-variable-assignments-font">
+<h2><font color=#800000> RECAP: variable assignments 變數設定 </font><a class="headerlink" href="#font-color-800000-recap-variable-assignments-font" title="Permalink to this heading">#</a></h2>
+<p><img src="attachment:daef4d92-5a17-40e2-a1d6-08a5fd246f28.png" width="60px">  (1) 請產生一個變數為 x 讓他是7</p>
+<p>(2)請產生一個變數為 my_variable 讓他是12.2</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="display-print">
+<h2>如果你想要display你設的變數，看看有無成功，可以用print這個指令<a class="headerlink" href="#display-print" title="Permalink to this heading">#</a></h2>
+<section id="font-color-ff00ff-your-turn-font-2show">
+<h3><font color=#ff00ff> Your turn: </font> 請把剛剛那2個變數show出來<a class="headerlink" href="#font-color-ff00ff-your-turn-font-2show" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="try-font-color-ff00ff-tab-font-that-cell-toolbar">
+<h3>try <font color=#ff00ff> tab </font> that 變數名稱會自行帶入 cell-toolbar外掛<a class="headerlink" href="#try-font-color-ff00ff-tab-font-that-cell-toolbar" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="img-src-attachment-daef4d92-5a17-40e2-a1d6-08a5fd246f28-png-width-60px-or">
+<h2><img src="attachment:daef4d92-5a17-40e2-a1d6-08a5fd246f28.png" width="60px"> 如果想知道這個變數是整數，實數, 虛數 or 字串，請問下什麼指令？<a class="headerlink" href="#img-src-attachment-daef4d92-5a17-40e2-a1d6-08a5fd246f28-png-width-60px-or" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#type your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="assignment-operator">
+<h2>Assignment operator  指定運算子<a class="headerlink" href="#assignment-operator" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>operator</p></th>
+<th class="head"><p>example</p></th>
+<th class="head"><p>same as</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>=</p></td>
+<td><p>x = 5</p></td>
+<td><p>x = 5</p></td>
+</tr>
+<tr class="row-odd"><td><p>+=</p></td>
+<td><p>x += 3</p></td>
+<td><p>x = x + 3</p></td>
+</tr>
+<tr class="row-even"><td><p>-=</p></td>
+<td><p>x -= 3</p></td>
+<td><p>x = x - 3</p></td>
+</tr>
+<tr class="row-odd"><td><p>*=</p></td>
+<td><p>x *= 3</p></td>
+<td><p>x = x * 3</p></td>
+</tr>
+<tr class="row-even"><td><p>/=</p></td>
+<td><p>x /= 3</p></td>
+<td><p>x = x / 3</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">+=</span> <span class="mi">3</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">x</span><span class="o">+=</span> <span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;x&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<section id="font-color-ff00ff-your-turn-font-x-2">
+<h3><font color=#ff00ff> Your turn: </font> 請試試看 x/=2<a class="headerlink" href="#font-color-ff00ff-your-turn-font-x-2" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write your code</span>
+
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="import-a-module-in-python">
+<h1>Import a module 新增模組 in python<a class="headerlink" href="#import-a-module-in-python" title="Permalink to this heading">#</a></h1>
+<section id="font-color-800000-recap-1-numpy-font-multidimensional-data-arrays">
+<h2><font color=#800000> RECAP 模組#1 numpy  </font> - multidimensional data arrays<a class="headerlink" href="#font-color-800000-recap-1-numpy-font-multidimensional-data-arrays" title="Permalink to this heading">#</a></h2>
+<section id="img-src-attachment-6d995bdc-f9aa-4676-9cb5-6808282bf5f3-png-width-60px-we-need-to-use-numpy-how-can-we-import-the-module-as-np">
+<h3><img src="attachment:6d995bdc-f9aa-4676-9cb5-6808282bf5f3.png" width="60px">  we need to use numpy , how can we import the module as np?<a class="headerlink" href="#img-src-attachment-6d995bdc-f9aa-4676-9cb5-6808282bf5f3-png-width-60px-we-need-to-use-numpy-how-can-we-import-the-module-as-np" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write you code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="creating-numpy-arrays">
+<h1>Creating <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays<a class="headerlink" href="#creating-numpy-arrays" title="Permalink to this heading">#</a></h1>
+<p>There are a number of ways to initialize new numpy arrays, for example from</p>
+<section id="create-a-numpy-array-from-lists">
+<h2>(1) create a numpy array from lists<a class="headerlink" href="#create-a-numpy-array-from-lists" title="Permalink to this heading">#</a></h2>
+<p>For example, to create new vector and matrix arrays from Python lists we can use the <code class="docutils literal notranslate"><span class="pre">numpy.array</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;Monday&#39;</span><span class="p">,</span><span class="s1">&#39;Tuesday&#39;</span><span class="p">,</span><span class="s1">&#39;Wedsday&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-a-numpy-array-from-array-generating-functions">
+<h2>(2) create a numpy array from array-generating functions<a class="headerlink" href="#create-a-numpy-array-from-array-generating-functions" title="Permalink to this heading">#</a></h2>
+<p>For larger arrays it is inpractical to initialize the data manually, using explicit python lists. Instead we can use one of the many functions in <code class="docutils literal notranslate"><span class="pre">numpy</span></code> that generate arrays of different forms. Some of the more common are:</p>
+<section id="arange">
+<h3>* arange<a class="headerlink" href="#arange" title="Permalink to this heading">#</a></h3>
+<p>numpy.arange([start, ]stop, [step, ]dtype=None)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a range</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># arguments: start(include), stop(exclude), step</span>
+<span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="font-color-ff00ff-your-turn-font-np-arange-tt-numpy-array-a-11-0-11">
+<h4><font color=#ff00ff> Your turn: </font> 請試試看用 np.arange 一個變數名為, tt, 的numpy array A 從-1到1，間隔0.1。這次我希望包含1，你會怎做？<a class="headerlink" href="#font-color-ff00ff-your-turn-font-np-arange-tt-numpy-array-a-11-0-11" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write your code</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="linspace">
+<h3>* linspace<a class="headerlink" href="#linspace" title="Permalink to this heading">#</a></h3>
+<p>numpy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None, axis=0)</p>
+<p><em>using linspace, both end points ARE included</em></p>
+<section id="font-color-ff00ff-your-turn-font-np-linspacexx-numpy-array-b-11-20">
+<h4><font color=#ff00ff> Your turn: </font> 請試試看用 np.linspace一個變數名為xx的 numpy array B 從-1到1，共20個數值。<a class="headerlink" href="#font-color-ff00ff-your-turn-font-np-linspacexx-numpy-array-b-11-20" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="font-color-ff00ff-your-turn-font">
+<h2><font color=#ff00ff> Your turn: </font><a class="headerlink" href="#font-color-ff00ff-your-turn-font" title="Permalink to this heading">#</a></h2>
+<p>(1) 請產生一個變數為 x 的numpy array，x從0到5，共5數值。</p>
+<p>(2) 再設一個numpy array, <span class="math notranslate nohighlight">\( y \)</span>, 讓 <span class="math notranslate nohighlight">\( y = x^2\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="now-we-wanna-plot-x-and-y-we-need-another-module-matplotlib">
+<h2>NOW, we wanna PLOT x and y, we need another module (模組), <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code><a class="headerlink" href="#now-we-wanna-plot-x-and-y-we-need-another-module-matplotlib" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="id1">
+<h2>Import a module 新增模組 in python<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="matplotlib-2d-and-3d-plotting-in-python">
+<h1><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> - 2D and 3D plotting in Python<a class="headerlink" href="#matplotlib-2d-and-3d-plotting-in-python" title="Permalink to this heading">#</a></h1>
+<p><img alt="image.png" src="attachment:b19ee3aa-8627-46c0-8880-2e9aab9eb044.png" /></p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>Matplotlib is a Python 2D plotting library and 3D graphics as well.  It can be used in Python scripts, the Python and IPython shells, the Jupyter notebook, web application servers, and four graphical user interface toolkits.</p>
+<ul class="simple">
+<li><p>Easy to get started</p></li>
+<li><p>Support for <span class="math notranslate nohighlight">\(\LaTeX\)</span> formatted labels and texts</p></li>
+<li><p>Great control of every element in a figure, including figure size and DPI.</p></li>
+<li><p>High-quality output in many formats, including PNG, PDF, SVG, EPS, and PGF.</p></li>
+<li><p>GUI for interactively exploring figures <em>and</em> support for headless generation of figure files (useful for batch jobs).</p></li>
+</ul>
+<p>More information at the Matplotlib web page: <a class="reference external" href="http://matplotlib.org/">http://matplotlib.org/</a></p>
+</section>
+<section id="id2">
+<h2>Import a module 新增模組 in python<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="matplotlib-pyplot">
+<h1><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> 中的 pyplot<a class="headerlink" href="#matplotlib-pyplot" title="Permalink to this heading">#</a></h1>
+<p>matplotlib.pyplot is a collection of functions that make matplotlib work like MATLAB.
+Each pyplot function makes some change to a figure: e.g., creates a figure, creates a plotting area in a figure, plots some lines in a plotting area, decorates the plot with labels, etc.</p>
+<p>To use numpy you need to import the module, for example:</p>
+<p><font color=#800000> RECAP: 方法一：<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">[module]</span> <span class="pre">(as</span> <span class="pre">[name])</span> </code> </font></p>
+<ul class="simple">
+<li><p>To get started using Matplotlib in a Python program, just import the matplotlib.pyplot module under the name plt</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># type your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">等等會跟大家分享如何把圖畫美美，現在我們就先產生</span> <span class="pre">quick</span> <span class="pre">and</span> <span class="pre">dirty</span> <span class="pre">plot</span></code></p>
+<section id="matplotlib-pyplotplot">
+<h2>matplotlib.pyplot——plot<a class="headerlink" href="#matplotlib-pyplotplot" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="matplotlib-pyplot-plot-args-kwargs-plot-lines-and-or-markers-to-the-axes">
+<h2>matplotlib.pyplot.plot(*args, **kwargs): Plot lines and/or markers to the Axes.<a class="headerlink" href="#matplotlib-pyplot-plot-args-kwargs-plot-lines-and-or-markers-to-the-axes" title="Permalink to this heading">#</a></h2>
+<p>args is a variable length argument, allowing for multiple x, y pairs with an optional format string.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://matplotlib.org/stable/tutorials/introductory/pyplot.html">https://matplotlib.org/stable/tutorials/introductory/pyplot.html</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img src="attachment:0cf3e8aa-d77e-4d17-98ef-9ff1ce4daf43.png" width="60px"> 你有沒有覺得線不夠平滑，你覺得該如何讓他變更平滑？</p>
+<p>請再畫一個比較平滑的 <span class="math notranslate nohighlight">\( y=x^2 \)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="matplotlib-pyplotsubplot-matplotlibsubplot">
+<h2>matplotlib.pyplot——subplot; matplotlib繪製多個子圖——subplot<a class="headerlink" href="#matplotlib-pyplotsubplot-matplotlibsubplot" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplot.html">https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplot.html</a></p>
+<section id="matplotlib-pyplot-subplots-nrows-1-ncols-1-sharex-false-sharey-false-squeeze-true-subplot-kw-none-gridspec-kw-none-fig-kw">
+<h3>* matplotlib.pyplot.subplots(nrows=1, ncols=1, sharex=False, sharey=False, squeeze=True, subplot_kw=None, gridspec_kw=None, **fig_kw)<a class="headerlink" href="#matplotlib-pyplot-subplots-nrows-1-ncols-1-sharex-false-sharey-false-squeeze-true-subplot-kw-none-gridspec-kw-none-fig-kw" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>we can use one of the many axis layout managers in matplotlib.</p></li>
+</ul>
+</section>
+<section id="figure-size-aspect-ratio-and-dpi">
+<h3>* Figure size, aspect ratio and DPI<a class="headerlink" href="#figure-size-aspect-ratio-and-dpi" title="Permalink to this heading">#</a></h3>
+<p>Matplotlib allows the aspect ratio, DPI and figure size to be specified when the <code class="docutils literal notranslate"><span class="pre">Figure</span></code> object is created, using
+the <code class="docutils literal notranslate"><span class="pre">figsize</span></code> and <code class="docutils literal notranslate"><span class="pre">dpi</span></code> keyword arguments.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">figsize</span></code> is a tuple of the width and height of the figure in inches.  If not provided, defaults to rcParams[“figure.figsize”] = [6.4, 4.8]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dpi</span></code> is the dots-per-inch (pixel per inch).  defaults to rcParams[“figure.dpi”] = 100.0</p></li>
+</ul>
+</section>
+<section id="font-color-674ea7-my-favorite-way-is-subplots-which-can-be-used-like-this">
+<h3><font color=#674ea7> My favorite way is <code class="docutils literal notranslate"><span class="pre">subplots</span></code>, which can be used like this:<a class="headerlink" href="#font-color-674ea7-my-favorite-way-is-subplots-which-can-be-used-like-this" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="font-color-674ea7-fig-ax-plt-subplots-nrows-1-ncols-1-figsize-5-5">
+<h3><font color=#674ea7> fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(5,5))<a class="headerlink" href="#font-color-674ea7-fig-ax-plt-subplots-nrows-1-ncols-1-figsize-5-5" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># type your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="xx-yy-latex">
+<h3>添加x軸名稱「x」，y軸標籤為「y」，圖標題為以數學公式(LaTeX)表示<a class="headerlink" href="#xx-yy-latex" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig1</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$ y=x^2 $&#39;</span> <span class="p">);</span>  <span class="c1"># 使用LaTeX語言的格式: $ LaTeX命令$ ; 加r轉義</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="matplotlib-pyplot-save-figures">
+<h3>matplotlib.pyplot: save figures<a class="headerlink" href="#matplotlib-pyplot-save-figures" title="Permalink to this heading">#</a></h3>
+<p>To save a figure to a file we can use the savefig method in the Figure class:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig1</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;filename.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig1</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;filename.pdf&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="font-color-ee7700-in-calss-quiz-font-plot-the-normal-distribution-function-15-pm-5-mins">
+<h2><font color=#EE7700> In-calss QUIZ: </font> plot the normal distribution function ( 15 <span class="math notranslate nohighlight">\(\pm\)</span> 5  mins)<a class="headerlink" href="#font-color-ee7700-in-calss-quiz-font-plot-the-normal-distribution-function-15-pm-5-mins" title="Permalink to this heading">#</a></h2>
+<p>Continuous probability distribution- the normal distribution
+$<span class="math notranslate nohighlight">\( p(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2} \)</span>$</p>
+<p>steps should be:</p>
+<section id="x-numpy-array-x1036-100">
+<h3>* 因為是個連續函數，所以你要自己先產生一個 變數 x 的numpy array, 這裡我們假設x從10到36，共100數值。<a class="headerlink" href="#x-numpy-array-x1036-100" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="mu-23-2-sigma-4">
+<h3>* 必要參數先假設，這裡我們假設 (1)變數 <span class="math notranslate nohighlight">\(\mu=23\)</span> &amp; (2)變數<span class="math notranslate nohighlight">\(\sigma = 4\)</span><a class="headerlink" href="#mu-23-2-sigma-4" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="normal-distribution-function-array-p">
+<h3>* 請你根據normal distribution function 數學式產生一個array, P<a class="headerlink" href="#normal-distribution-function-array-p" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="fig-ax-plt-subplots-1-1-figsize-8-5-p-as-function-of-x">
+<h3>* 用<code class="docutils literal notranslate"><span class="pre">fig,</span> <span class="pre">ax</span> <span class="pre">=</span> <span class="pre">plt.subplots(1,1,figsize=(8,5))</span></code> 開一張圖，然後畫P as function of x<a class="headerlink" href="#fig-ax-plt-subplots-1-1-figsize-8-5-p-as-function-of-x" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="x-p-x-title-normal-pdf">
+<h3>* 橫軸標上 x， 縱軸標上 p(x)，圖的title 給 “normal PDF”<a class="headerlink" href="#x-p-x-title-normal-pdf" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="save-your-figure-to-a-pdf-file-please-set-filename-as-20221024-quiz-yourname-pdf-sumbit-it-to-moodle-system">
+<h3>* save your figure to a pdf file, please set filename as 20221024_Quiz_yourname.pdf, sumbit it to moodle system<a class="headerlink" href="#save-your-figure-to-a-pdf-file-please-set-filename-as-20221024-quiz-yourname-pdf-sumbit-it-to-moodle-system" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img src="attachment:5041afbf-15d7-4a60-8bb1-ae73c53d16b9.png" width="60px"> We wanna plot  <span class="math notranslate nohighlight">\( y = x, y=x^2, y = x^3\)</span> in the main panel in a figure</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># change 5 to 100, lines will be more smoother, #TRY IT</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">3</span>
+
+<span class="n">fig1</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span> <span class="c1">#a figure with a 1x1 grid of Axes</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y3</span><span class="p">);</span>   <span class="c1">#pyplot default will be pltted at a solid solid lin</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">])</span> <span class="c1">#畫座標軸的範圍 a list of [xmin, xmax, ymin, ymax]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="colors-in-default-property-cycle">
+<h3>Colors in default property cycle<a class="headerlink" href="#colors-in-default-property-cycle" title="Permalink to this heading">#</a></h3>
+<img src="attachment:8da68daf-c5d2-49ae-a35e-533ce047d606.png" width="600"> 
+https://matplotlib.org/stable/users/dflt_style_changes.html<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 設定自動顏色參數======================================================</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">from</span> <span class="nn">cycler</span> <span class="kn">import</span> <span class="n">cycler</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.prop_cycle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;bgrcmyk&#39;</span><span class="p">)</span>
+<span class="c1">#=====================================================================</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># change 5 to 100, lines will be more smoother, #TRY IT</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">3</span>
+
+<span class="n">fig2</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span> <span class="c1">#a figure with a 1x1 grid of Axes</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y3</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span> 
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>  
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">)</span> <span class="c1"># plot x and y using blue circle markers</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="setting-colors">
+<h3>Setting colors<a class="headerlink" href="#setting-colors" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span> 
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  
+<span class="n">y2</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">colorline</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">120</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">235</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">colorline</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img src="attachment:5a922463-79cf-4731-acc0-a255130760aa.png" width="60px"> 上圖，推測markerfacecolor是指什麼？</p>
+<p><img src="attachment:5a922463-79cf-4731-acc0-a255130760aa.png" width="60px"> 上圖，推測markeredgecolor是指什麼？</p>
+<p><img src="attachment:5a922463-79cf-4731-acc0-a255130760aa.png" width="60px"> 有哪些symbol可以畫？看下表</p>
+</section>
+</section>
+<section id="line-and-marker-styles-practice">
+<h2>Line and marker styles practice<a class="headerlink" href="#line-and-marker-styles-practice" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>character</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>‘-’</p></td>
+<td><p>solid line style</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘–’</p></td>
+<td><p>dashed line style</p></td>
+</tr>
+<tr class="row-even"><td><p>‘-.’</p></td>
+<td><p>dash-dot line style</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘:’</p></td>
+<td><p>dotted line style</p></td>
+</tr>
+<tr class="row-even"><td><p>‘.’</p></td>
+<td><p>point marker</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘,’</p></td>
+<td><p>pixel marker</p></td>
+</tr>
+<tr class="row-even"><td><p>‘o’</p></td>
+<td><p>circle marker</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘v’</p></td>
+<td><p>triangle_down marker</p></td>
+</tr>
+<tr class="row-even"><td><p>‘^’</p></td>
+<td><p>triangle_up marker</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘&lt;’</p></td>
+<td><p>triangle_left marker</p></td>
+</tr>
+<tr class="row-even"><td><p>‘&gt;’</p></td>
+<td><p>triangle_right marker</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘1’</p></td>
+<td><p>tri_down marker</p></td>
+</tr>
+<tr class="row-even"><td><p>‘2’</p></td>
+<td><p>tri_up marker</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘3’</p></td>
+<td><p>tri_left marker</p></td>
+</tr>
+<tr class="row-even"><td><p>‘4’</p></td>
+<td><p>tri_right marker</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘s’</p></td>
+<td><p>square marker</p></td>
+</tr>
+<tr class="row-even"><td><p>‘p’</p></td>
+<td><p>pentagon marker</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘*’</p></td>
+<td><p>star marker</p></td>
+</tr>
+<tr class="row-even"><td><p>‘h’</p></td>
+<td><p>hexagon1 marker</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘H’</p></td>
+<td><p>hexagon2 marker</p></td>
+</tr>
+<tr class="row-even"><td><p>‘+’</p></td>
+<td><p>plus marker</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘x’</p></td>
+<td><p>x marker</p></td>
+</tr>
+<tr class="row-even"><td><p>‘D’</p></td>
+<td><p>diamond marker</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘d’</p></td>
+<td><p>thin_diamond marker</p></td>
+</tr>
+<tr class="row-even"><td><p>‘_’</p></td>
+<td><p>hline marker</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.50</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.00</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.00</span><span class="p">)</span>
+
+<span class="c1"># possible linestype options ‘-‘, ‘--’, ‘-.’, ‘:’, ‘steps’</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+
+<span class="c1"># custom dash</span>
+<span class="n">line</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.50</span><span class="p">)</span>
+<span class="n">line</span><span class="o">.</span><span class="n">set_dashes</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span> <span class="c1"># format: line length, space length, ...</span>
+
+<span class="c1"># possible marker symbols: marker = &#39;+&#39;, &#39;o&#39;, &#39;*&#39;, &#39;s&#39;, &#39;,&#39;, &#39;.&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, ...</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span> <span class="mi">9</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">11</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+
+<span class="c1"># marker size and color</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">13</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">14</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">16</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> 
+        <span class="n">markerfacecolor</span><span class="o">=</span><span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="n">markeredgewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="numpy-random-data">
+<h2>Numpy: Random data<a class="headerlink" href="#numpy-random-data" title="Permalink to this heading">#</a></h2>
+<section id="random-sampling-numpy-random">
+<h3>Random sampling (numpy.random)<a class="headerlink" href="#random-sampling-numpy-random" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://numpy.org/doc/stable/reference/random/index.html?highlight=random#module-numpy.random">https://numpy.org/doc/stable/reference/random/index.html?highlight=random#module-numpy.random</a></p>
+<p>Numpy’s random number routines produce pseudo random numbers using combinations of a BitGenerator to create sequences and a Generator to use those sequences to sample from different statistical distributions</p>
+<ul class="simple">
+<li><p>(1) randint(low[, high, size, dtype])	Return random integers from low (inclusive) to high (exclusive).</p></li>
+<li><p>(2) rand(d0, d1, …, dn)	Random values in a given shape.</p></li>
+<li><p>(3) randn(d0, d1, …, dn)	Return a sample (or samples) from the “standard normal” distribution.</p></li>
+</ul>
+</section>
+<section id="numpy-random-randint-low-high-size">
+<h3>* numpy.random.randint(low, high,size)<a class="headerlink" href="#numpy-random-randint-low-high-size" title="Permalink to this heading">#</a></h3>
+<p>Return random integers from the “<code class="docutils literal notranslate"><span class="pre">discrete</span> <span class="pre">uniform</span></code>” distribution of the specified dtype in the “half-open” interval</p>
+<p>[low, high) from low (inclusive) to high (exclusive).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">randomArray1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">randomArray1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="numpy-get-mean-and-standard-deviation">
+<h2>numpy: get mean and standard deviation<a class="headerlink" href="#numpy-get-mean-and-standard-deviation" title="Permalink to this heading">#</a></h2>
+<section id="numpy-mean-a-axis-none-dtype-none">
+<h3>* numpy.mean(a, axis=None, dtype=None)<a class="headerlink" href="#numpy-mean-a-axis-none-dtype-none" title="Permalink to this heading">#</a></h3>
+<p>Compute the arithmetic mean along the specified axis.</p>
+<section id="way-1">
+<h4>way #1:<a class="headerlink" href="#way-1" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">randomArray1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mean1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="font-color-ff00ff-your-turn-font-way-2-mean2-randomarray1-mean">
+<h4><font color=#ff00ff> Your turn: </font> way #2: 請試看看設一個新的變數, mean2 = randomArray1.mean()<a class="headerlink" href="#font-color-ff00ff-your-turn-font-way-2-mean2-randomarray1-mean" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># type your code here</span>
+
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">mean2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">randomArray1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img src="attachment:3cb53191-dc72-437b-80d2-861ce861616e.png" width="60px"> 猜看看，如何算standard devation？</p>
+</section>
+</section>
+<section id="numpy-std-a-axis-none-dtype-none-ddof-0">
+<h3>* numpy.std(a, axis=None, dtype=None, ddof=0)<a class="headerlink" href="#numpy-std-a-axis-none-dtype-none-ddof-0" title="Permalink to this heading">#</a></h3>
+<p>Compute the standard deviation along the specified axis.</p>
+<ul class="simple">
+<li><p>ddof : int</p></li>
+</ul>
+<p>Means Delta Degrees of Freedom. The divisor used in calculations is N - ddof, where N represents the number of elements.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stdvalue</span> <span class="o">=</span> <span class="n">randomArray1</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stdvalue</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img src="attachment:3cb53191-dc72-437b-80d2-861ce861616e.png" width="60px"> guest how can we get the maximun and minimum values of randomArray1?</p>
+<p>找 randomArray1 最大值與最小值</p>
+<section id="hint-randomarray1-tab">
+<h4><code class="docutils literal notranslate"><span class="pre">hint</span> <span class="pre">你可以試看看</span> <span class="pre">randomArray1.[tab]</span></code><a class="headerlink" href="#hint-randomarray1-tab" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="font-color-ee7700-in-calss-exercise-font-numpy-random-randint-low-high-size-random-numpy-array-mean-standard-deviation">
+<h2><font color=#EE7700> In-calss exercise: </font> 利用<code class="docutils literal notranslate"><span class="pre">numpy.random.randint(low,</span> <span class="pre">high,size)</span></code>產生一個random numpy array，計算其mean 與 standard deviation, 找到最大值與最小值<a class="headerlink" href="#font-color-ee7700-in-calss-exercise-font-numpy-random-randint-low-high-size-random-numpy-array-mean-standard-deviation" title="Permalink to this heading">#</a></h2>
+<section id="numpy-array-b-random40-2-520-3-1000">
+<h3>* 產生一個numpy array, B,讓他random的從40.2~ 520.3，取1000個。<a class="headerlink" href="#numpy-array-b-random40-2-520-3-1000" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="meanbmean-std-bstd">
+<h3>* mean的變數設為Bmean, std 的變數設為 Bstd<a class="headerlink" href="#meanbmean-std-bstd" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="b-array-bmax-bmin">
+<h3>* B array 中最大值設為Bmax, 最小值設為Bmin<a class="headerlink" href="#b-array-bmax-bmin" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="matplotlib-pyplot-plot-histogram">
+<h2>matplotlib.pyplot: plot histogram<a class="headerlink" href="#matplotlib-pyplot-plot-histogram" title="Permalink to this heading">#</a></h2>
+<section id="n-bins-patches-plt-hist-x-bins-none-density-false-color-none">
+<h3>*  n, bins, patches = plt.hist (x, bins=None,density=False,color=None)<a class="headerlink" href="#n-bins-patches-plt-hist-x-bins-none-density-false-color-none" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hist.html">https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hist.html</a></p>
+</section>
+<section id="if-set-density-true-counts-normalized-len-bins-to-form-a-probability-density">
+<h3><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">set</span> <span class="pre">density=True</span></code> , counts normalized len(bins) to form a probability density<a class="headerlink" href="#if-set-density-true-counts-normalized-len-bins-to-form-a-probability-density" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">bins</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Histogram&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="font-color-ff00ff-your-turn-font-density-true">
+<h3><font color=#ff00ff> Your turn: </font> 把density參數，設為 True，再畫一次。<a class="headerlink" href="#font-color-ff00ff-your-turn-font-density-true" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="np-random-randn-size">
+<h2>* np.random.randn(size) 依照常態分佈趨勢產生隨機數<a class="headerlink" href="#np-random-randn-size" title="Permalink to this heading">#</a></h2>
+<p>Return a sample (or samples) from the “standard normal” distribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">Bmean</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">Bstd</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">Bmax</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">Bmin</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">bins</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Histogram&#39;</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">Bmin</span><span class="p">,</span> <span class="n">Bmax</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">Bmean</span>
+<span class="n">sigma</span>  <span class="o">=</span> <span class="n">Bstd</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span><span class="o">/</span><span class="n">sigma</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability density function&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="np-loadtxt">
+<h2>np.loadtxt<a class="headerlink" href="#np-loadtxt" title="Permalink to this heading">#</a></h2>
+<section id="id3">
+<h3>讀檔 way#1<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.loadtxt.html">https://numpy.org/doc/stable/reference/generated/numpy.loadtxt.html</a></p></li>
+</ul>
+<p>You can create new <code class="docutils literal notranslate"><span class="pre">numpy</span> <span class="pre">arrays</span></code> by importing data from files, such as text files. You can import these data using the <code class="docutils literal notranslate"><span class="pre">loadtxt()</span></code> function from numpy, which you imported as np.</p>
+<p>For both .txt and .csv files, you need to specify a value for the parameter called fname for the file name (e.g. <code class="docutils literal notranslate"><span class="pre">np.loadtxt(fname</span> <span class="pre">=</span> <span class="pre">&quot;filename.txt&quot;)</span></code>). Be sure to update the path for the file to your home directory.</p>
+</section>
+</section>
+<section id="id4">
+<h2>語法-<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<section id="numpy-loadtxt-fname-comments-skiprows-0-usecols-none-unpack-false-delimiter-none">
+<h3>numpy.loadtxt(fname, comments=’#’, skiprows=0, usecols=None, unpack=False,delimiter=None)<a class="headerlink" href="#numpy-loadtxt-fname-comments-skiprows-0-usecols-none-unpack-false-delimiter-none" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>comments : str or sequence of str, optional
+The characters or list of characters used to indicate the start of a comment. None implies no comments. For backwards compatibility, byte strings will be decoded as ‘latin1’. The default is ‘#’.</p></li>
+<li><p>read the columns of the interests.
+usecols : int or sequence, optional Which columns to read, with 0 being the first. For example, usecols = (0,1,2) will extract the 1st, 2nd and 3thcolumns. The default, None, results in all columns being read.</p></li>
+<li><p>unpack : bool, optional If True, the returned array is transposed, so that arguments may be unpacked using x, y, z = loadtxt(…). When used with a structured data-type, arrays are returned for each field. Default is False.</p></li>
+</ul>
+</section>
+<section id="id5">
+<h2>變數<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>fname : 檔案名稱</p></li>
+<li><p>comments : 註解符號，預設為’#’。</p></li>
+<li><p>skiprows : 跳過前面n行（預設為0）</p></li>
+<li><p>usecols : 要讀入的直行數（預設為所有的直行都讀入）</p></li>
+<li><p>unpack : 是否要將一個直行讀取成一個1D array，預設為關閉(False)，If set to ‘True”, x, y, z = loadtxt(…)</p></li>
+</ul>
+</section>
+<section id="font-color-ff00ff-your-turn-font-score-d-numpy-arrray-grade">
+<h2><font color=#ff00ff> Your turn: </font> 請試看看讀score.d檔，將所以數據設成一個numpy arrray，取名為grade<a class="headerlink" href="#font-color-ff00ff-your-turn-font-score-d-numpy-arrray-grade" title="Permalink to this heading">#</a></h2>
+<section id="grade-np-loadtxt-score-d-unpack-true">
+<h3>指令為 grade = np.loadtxt(‘./score.d’, unpack=True )<a class="headerlink" href="#grade-np-loadtxt-score-d-unpack-true" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here.</span>
+
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">grade</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img src="attachment:3cb53191-dc72-437b-80d2-861ce861616e.png" width="60px"> 請算出這班平均分數？與標準差？</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here. </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pythonFUN_01.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to scientific computing with Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="20221107_FUN04_real.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction to scientific computing with Python</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction to scientific computing with Python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matlabplot-ploting-several-panels-in-figure">(1) matlabplot: ploting several panels in figure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-random-random-generaters">(2) numpy.random: random generaters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-loadtxt-read-data-as-an-array-read-files-way-1">(3) numpy.loadtxt: read data as an array (read files way #1)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources">Sources</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#one-of-python-interpreters">One of Python interpreters 編譯器:</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-in-jupyter-lab">Notebook in jupyter-lab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-the-jupyter-notebook-in-jupyter-lab">NOTE: the Jupyter notebook in Jupyter Lab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-800000-recap-variable-assignments-font"><font color="#800000"> RECAP: variable assignments 變數設定 </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#display-print">如果你想要display你設的變數，看看有無成功，可以用print這個指令</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-2show"><font color="#ff00ff"> Your turn: </font> 請把剛剛那2個變數show出來</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#try-font-color-ff00ff-tab-font-that-cell-toolbar">try <font color="#ff00ff"> tab </font> that 變數名稱會自行帶入 cell-toolbar外掛</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-daef4d92-5a17-40e2-a1d6-08a5fd246f28-png-width-60px-or"><img src="attachment:daef4d92-5a17-40e2-a1d6-08a5fd246f28.png" width="60px"/> 如果想知道這個變數是整數，實數, 虛數 or 字串，請問下什麼指令？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-operator">Assignment operator  指定運算子</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-x-2"><font color="#ff00ff"> Your turn: </font> 請試試看 x/=2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#import-a-module-in-python">Import a module 新增模組 in python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-800000-recap-1-numpy-font-multidimensional-data-arrays"><font color="#800000"> RECAP 模組#1 numpy  </font> - multidimensional data arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-6d995bdc-f9aa-4676-9cb5-6808282bf5f3-png-width-60px-we-need-to-use-numpy-how-can-we-import-the-module-as-np"><img src="attachment:6d995bdc-f9aa-4676-9cb5-6808282bf5f3.png" width="60px"/>  we need to use numpy , how can we import the module as np?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-numpy-arrays">Creating <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-numpy-array-from-lists">(1) create a numpy array from lists</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-numpy-array-from-array-generating-functions">(2) create a numpy array from array-generating functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arange">* arange</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-np-arange-tt-numpy-array-a-11-0-11"><font color="#ff00ff"> Your turn: </font> 請試試看用 np.arange 一個變數名為, tt, 的numpy array A 從-1到1，間隔0.1。這次我希望包含1，你會怎做？</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linspace">* linspace</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-np-linspacexx-numpy-array-b-11-20"><font color="#ff00ff"> Your turn: </font> 請試試看用 np.linspace一個變數名為xx的 numpy array B 從-1到1，共20個數值。</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font"><font color="#ff00ff"> Your turn: </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-we-wanna-plot-x-and-y-we-need-another-module-matplotlib">NOW, we wanna PLOT x and y, we need another module (模組), <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Import a module 新增模組 in python</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-2d-and-3d-plotting-in-python"><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> - 2D and 3D plotting in Python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Import a module 新增模組 in python</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-pyplot"><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> 中的 pyplot</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-pyplotplot">matplotlib.pyplot——plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-pyplot-plot-args-kwargs-plot-lines-and-or-markers-to-the-axes">matplotlib.pyplot.plot(*args, **kwargs): Plot lines and/or markers to the Axes.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-pyplotsubplot-matplotlibsubplot">matplotlib.pyplot——subplot; matplotlib繪製多個子圖——subplot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-pyplot-subplots-nrows-1-ncols-1-sharex-false-sharey-false-squeeze-true-subplot-kw-none-gridspec-kw-none-fig-kw">* matplotlib.pyplot.subplots(nrows=1, ncols=1, sharex=False, sharey=False, squeeze=True, subplot_kw=None, gridspec_kw=None, **fig_kw)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-size-aspect-ratio-and-dpi">* Figure size, aspect ratio and DPI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-674ea7-my-favorite-way-is-subplots-which-can-be-used-like-this"><font color="#674ea7"> My favorite way is <code class="docutils literal notranslate"><span class="pre">subplots</span></code>, which can be used like this:</font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-674ea7-fig-ax-plt-subplots-nrows-1-ncols-1-figsize-5-5"><font color="#674ea7"> fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(5,5))</font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xx-yy-latex">添加x軸名稱「x」，y軸標籤為「y」，圖標題為以數學公式(LaTeX)表示</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-pyplot-save-figures">matplotlib.pyplot: save figures</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ee7700-in-calss-quiz-font-plot-the-normal-distribution-function-15-pm-5-mins"><font color="#EE7700"> In-calss QUIZ: </font> plot the normal distribution function ( 15 <span class="math notranslate nohighlight">\(\pm\)</span> 5  mins)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x-numpy-array-x1036-100">* 因為是個連續函數，所以你要自己先產生一個 變數 x 的numpy array, 這裡我們假設x從10到36，共100數值。</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mu-23-2-sigma-4">* 必要參數先假設，這裡我們假設 (1)變數 <span class="math notranslate nohighlight">\(\mu=23\)</span> &amp; (2)變數<span class="math notranslate nohighlight">\(\sigma = 4\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-distribution-function-array-p">* 請你根據normal distribution function 數學式產生一個array, P</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-ax-plt-subplots-1-1-figsize-8-5-p-as-function-of-x">* 用<code class="docutils literal notranslate"><span class="pre">fig,</span> <span class="pre">ax</span> <span class="pre">=</span> <span class="pre">plt.subplots(1,1,figsize=(8,5))</span></code> 開一張圖，然後畫P as function of x</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x-p-x-title-normal-pdf">* 橫軸標上 x， 縱軸標上 p(x)，圖的title 給 “normal PDF”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-your-figure-to-a-pdf-file-please-set-filename-as-20221024-quiz-yourname-pdf-sumbit-it-to-moodle-system">* save your figure to a pdf file, please set filename as 20221024_Quiz_yourname.pdf, sumbit it to moodle system</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#colors-in-default-property-cycle">Colors in default property cycle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-colors">Setting colors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#line-and-marker-styles-practice">Line and marker styles practice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-random-data">Numpy: Random data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-sampling-numpy-random">Random sampling (numpy.random)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-random-randint-low-high-size">* numpy.random.randint(low, high,size)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-get-mean-and-standard-deviation">numpy: get mean and standard deviation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-mean-a-axis-none-dtype-none">* numpy.mean(a, axis=None, dtype=None)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#way-1">way #1:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-way-2-mean2-randomarray1-mean"><font color="#ff00ff"> Your turn: </font> way #2: 請試看看設一個新的變數, mean2 = randomArray1.mean()</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-std-a-axis-none-dtype-none-ddof-0">* numpy.std(a, axis=None, dtype=None, ddof=0)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hint-randomarray1-tab"><code class="docutils literal notranslate"><span class="pre">hint</span> <span class="pre">你可以試看看</span> <span class="pre">randomArray1.[tab]</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ee7700-in-calss-exercise-font-numpy-random-randint-low-high-size-random-numpy-array-mean-standard-deviation"><font color="#EE7700"> In-calss exercise: </font> 利用<code class="docutils literal notranslate"><span class="pre">numpy.random.randint(low,</span> <span class="pre">high,size)</span></code>產生一個random numpy array，計算其mean 與 standard deviation, 找到最大值與最小值</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-array-b-random40-2-520-3-1000">* 產生一個numpy array, B,讓他random的從40.2~ 520.3，取1000個。</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meanbmean-std-bstd">* mean的變數設為Bmean, std 的變數設為 Bstd</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-array-bmax-bmin">* B array 中最大值設為Bmax, 最小值設為Bmin</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-pyplot-plot-histogram">matplotlib.pyplot: plot histogram</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#n-bins-patches-plt-hist-x-bins-none-density-false-color-none">*  n, bins, patches = plt.hist (x, bins=None,density=False,color=None)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-set-density-true-counts-normalized-len-bins-to-form-a-probability-density"><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">set</span> <span class="pre">density=True</span></code> , counts normalized len(bins) to form a probability density</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-density-true"><font color="#ff00ff"> Your turn: </font> 把density參數，設為 True，再畫一次。</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#np-random-randn-size">* np.random.randn(size) 依照常態分佈趨勢產生隨機數</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#np-loadtxt">np.loadtxt</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">讀檔 way#1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">語法-</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-loadtxt-fname-comments-skiprows-0-usecols-none-unpack-false-delimiter-none">numpy.loadtxt(fname, comments=’#’, skiprows=0, usecols=None, unpack=False,delimiter=None)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options">Options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">變數</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-score-d-numpy-arrray-grade"><font color="#ff00ff"> Your turn: </font> 請試看看讀score.d檔，將所以數據設成一個numpy arrray，取名為grade</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grade-np-loadtxt-score-d-unpack-true">指令為 grade = np.loadtxt(‘./score.d’, unpack=True )</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ui-Ho Ang, Terry
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
