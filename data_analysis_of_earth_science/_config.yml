@@ -37,4 +37,4 @@ html:
   use_repository_button: true
   
 launch_buttons:
-  binderhub_url: https://mybinder.org/v2/gh/pyrox-shin/da-es-work/HEAD
+  binderhub_url: https://mybinder.org/v2/gh/pyrox-shin/da-es-work_/HEAD
