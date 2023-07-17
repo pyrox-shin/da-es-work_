@@ -1,0 +1,1520 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to scientific computing with Python &#8212; Data Analysis of Earth Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pythonFUN_01';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction to scientific computing with Python" href="20221024_FUN02.html" />
+    <link rel="prev" title="這是個測試。" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    這是個測試。
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to scientific computing with Python</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="20221024_FUN02.html">Introduction to scientific computing with Python</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="20221107_FUN04_real.html">Introduction to scientific computing with Python</a></li>
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/pyrox-shin/da-es-work/HEAD/v2/gh/pyrox-shin/Data Analysis of Earth Science/main?urlpath=tree/docs/pythonFUN_01.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pyrox-shin/Data Analysis of Earth Science" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pyrox-shin/Data Analysis of Earth Science/issues/new?title=Issue%20on%20page%20%2FpythonFUN_01.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/pythonFUN_01.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to scientific computing with Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction to scientific computing with Python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources">Sources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-python">What is Python?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-makes-python-suitable-for-scientific-computing">What makes python suitable for scientific computing?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-interpreters">Python interpreters 解譯器:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipython">IPython</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab">JupyterLab</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab-is-one-interface-used-to-create-and-interact-with-jupyter-notebooks">JupyterLab is one interface used to create and interact with Jupyter Notebooks.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-start-to-enjoy-python-in-jupyter-notebook">Let’s start to enjoy Python in jupyter-notebook</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-in-jupyter-notebook">NOTE:  in Jupyter notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators">Operators 運算子</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-operators">Arithmetic Operators 算術運算子</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-11-3"><font color="#ff00ff"> Your turn: </font> 請計算 11/3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><font color="#ff00ff"> Your turn: </font> 請試11//3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-round-11-3"><font color="#ff00ff"> Your turn: </font> 請試round(11/3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><font color="#ff00ff"> Your turn: </font> 請試11%3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables 變數</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-assignments">variable assignments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-variable-type"><strong>type</strong>(variable) ==&gt; 知道這個變數是哪種type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-variables-can-be-assigned-with-the-same-value">Multiple variables can be assigned with the same value.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strings-are-the-variable-type-that-is-used-for-storing-text-messages"><strong>Strings</strong>  are the variable type that is used for storing text messages.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-5-happy-brithday"><font color="#ff00ff"> Your turn: </font> 請寫出5次 Happy Brithday!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-ways-patty-frequently-used">The ways Patty frequently used:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-5-3"><font color="#ff00ff"> Your turn: </font> 請利用** 計算<span class="math notranslate nohighlight">\(5^3\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-a-module-in-python">Import a module 新增模組 in python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-multidimensional-data-arrays">模組#1 Numpy - multidimensional data arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#to-use-numpy-you-need-to-import-the-module-for-example">To use <code class="docutils literal notranslate"><span class="pre">numpy</span></code> you need to import the module, for example:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-sqrt-5"><font color="#ff00ff"> Your turn: </font> 請計算出 $<span class="math notranslate nohighlight">\( \sqrt{5}\)</span>$</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-e-0"><font color="#ff00ff"> Your turn: </font> 請計算出 $<span class="math notranslate nohighlight">\( e^0\)</span>$</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-sin-0"><font color="#ff00ff"> Your turn: </font> 請試計算sin(0)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-sin-90-90-o"><font color="#ff00ff"> Your turn: </font> 請試計算sin(90) 此為<span class="math notranslate nohighlight">\(90^o\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ee7700-in-calss-exercise-font-computing-with-formulas"><font color="#EE7700"> In-calss exercise: </font>  computing with formulas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-from-the-lecture-about-propgating-of-errors-on-10-25">Example from the lecture about propgating of errors on 10/25</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structures">Data Structures 資料型態</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compound-types-list-tuple-set-dictionary">Compound types:  List 串列, Tuple 元組, set 集合, dictionary 字典</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists 串列</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists-are-declared-by-just-equating-a-variable-to-or-del-list">Lists are declared by just equating a variable to ‘[ ]’ or del list.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-can-directly-assign-the-sequence-of-data-to-a-list-mylist-as-shown">One can directly assign the sequence of data to a list, mylist, as shown.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-del-keyword-can-also-delete-the-list-completely">The del keyword can also delete the list completely</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#len-find-the-length-of-the-list-or-the-number-of-elements-in-a-list">len() : find the length of the list or the number of elements in a list</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-len-mylist"><font color="#ff00ff"> Your turn: </font> 請試試看 len(mylist)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing">Indexing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-mylist-1"><font color="#ff00ff"> Your turn: </font> 請試試看 mylist[-1]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-png-mylist-len-mylist-3"> mylist[ len(mylist)-3 ] = ?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-numpy-arrays">Creating <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-1-lists">From (1) <em>lists</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-algebra-scalar-array-operations">Linear algebra- Scalar-array operations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ee7700-in-calss-exercise-font-play-with-np-array"><font color="#EE7700"> In-calss exercise: </font>  play with np.array</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Creating <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-2-array-generating-functions">From (2) <em>array-generating functions</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arange">arange</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-np-arange-numpy-array-a-11-0-11"><font color="#ff00ff"> Your turn: </font> 請試試看用 np.arange 一個numpy array A 從-1到1，間隔0.1。這次我希望包含1，你會怎做？</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linspace">linspace</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-np-linspacenumpy-array-b-11-20"><font color="#ff00ff"> Your turn: </font> 請試試看用 np.linspace一個numpy array B 從-1到1，共20個數值。</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-x-numpy-array-x05-5"><font color="#ff00ff"> Your turn: </font>請產生一個變數為 x 的numpy array，x從0到5，共5數值。</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-numpy-array-y-y-x-2"><font color="#ff00ff"> Your turn: </font> 再設一個numpy array, <span class="math notranslate nohighlight">\( y \)</span>, 讓 <span class="math notranslate nohighlight">\( y = x^2\)</span></a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-scientific-computing-with-python">
+<h1>Introduction to scientific computing with Python<a class="headerlink" href="#introduction-to-scientific-computing-with-python" title="Permalink to this heading">#</a></h1>
+<p>by pylin.patty 2022/10/16, 2021/11/07,2021/10/31, 2020/10/12 and 2019/10/13.</p>
+<section id="sources">
+<h2>Sources<a class="headerlink" href="#sources" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="github reference external" href="http://github.com/jrjohansson/scientific-python-lectures">jrjohansson/scientific-python-lectures</a></p></li>
+<li><p><a class="github reference external" href="https://github.com/rajathkmp/Python-Lectures/">rajathkmp/Python-Lectures</a></p></li>
+<li><p><a class="reference external" href="https://medium.com/ccclub/ccclub-python-for-beginners-tutorial-bfb6dfa69d52">https://medium.com/ccclub/ccclub-python-for-beginners-tutorial-bfb6dfa69d52</a></p></li>
+</ul>
+</section>
+<section id="what-is-python">
+<h2>What is Python?<a class="headerlink" href="#what-is-python" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="http://www.python.org/">Python</a> is a modern, general-purpose, object-oriented, high-level programming language.</p>
+<p>General characteristics of Python:</p>
+<ul class="simple">
+<li><p><strong>clean and simple language:</strong> Easy-to-read and intuitive code, easy-to-learn minimalistic syntax.</p></li>
+<li><p><strong>expressive language:</strong> Fewer lines of code, fewer bugs, easier to maintain.</p></li>
+</ul>
+<p>Technical details:</p>
+<ul class="simple">
+<li><p><strong>dynamically typed:</strong> No need to define the type of variables, function arguments or return types.</p></li>
+<li><p><strong>automatic memory management:</strong> No need to explicitly allocate and deallocate memory for variables and data arrays. No memory leak bugs.</p></li>
+<li><p><strong>interpreted (直譯):</strong> No need to compile (編譯) the code. The Python interpreter reads and executes the python code directly.</p></li>
+</ul>
+<p><img alt="image.png" src="attachment:5b7634d2-b7cb-44c0-9345-acb00f8f63bb.png" /></p>
+<center> (from icarus.cs.weber.edu) </center>
+<p><img alt="image.png" src="attachment:cfb90cde-f8b8-49d2-83bc-b6af08540e88.png" /></p>
+<center>https://www.guru99.com/difference-compiler-vs-interpreter.html</center>
+Advantages:
+<ul class="simple">
+<li><p>The main advantage is ease of programming, minimizing the time required to develop, debug and maintain the code.</p></li>
+<li><p>Well designed language that encourage many good programming practices:</p></li>
+<li><p>Modular and object-oriented programming, good system for packaging and re-use of code. This often results in more transparent, maintainable and bug-free code.</p></li>
+<li><p>Documentation tightly integrated with the code.</p></li>
+<li><p>A large standard library, and a large collection of add-on packages.</p></li>
+</ul>
+<p>Disadvantages:</p>
+<ul class="simple">
+<li><p>Since Python is an interpreted and dynamically typed programming language, the execution of python code can be slow compared to compiled statically typed programming languages, such as C and Fortran.</p></li>
+<li><p>Somewhat decentralized, with different environment, packages and documentation spread out at different places. Can make it harder to get started and manage.</p></li>
+</ul>
+<p><img alt="image.png" src="attachment:644e3930-d53a-406e-931e-bad1b07d7ecb.png" /></p>
+<center>https://medium.com/citycoddee</center></section>
+<section id="what-makes-python-suitable-for-scientific-computing">
+<h2>What makes python suitable for scientific computing?<a class="headerlink" href="#what-makes-python-suitable-for-scientific-computing" title="Permalink to this heading">#</a></h2>
+<p><img alt="image.png" src="attachment:808de42e-fe9b-436f-aac3-c921dbc39347.png" />
+<img alt="image.png" src="attachment:ed6df04e-cde5-448c-b1e9-bb722de826fc.png" /></p>
+<p>Python has a strong position in scientific computing:</p>
+<ul class="simple">
+<li><p>Large community of users, easy to find help and documentation.</p></li>
+<li><p>Extensive ecosystem of scientific libraries and environments</p>
+<ul>
+<li><p>numpy: <a class="reference external" href="http://numpy.scipy.org">http://numpy.scipy.org</a> - Numerical Python</p></li>
+<li><p>scipy: <a class="reference external" href="http://www.scipy.org">http://www.scipy.org</a> -  Scientific Python</p></li>
+<li><p>matplotlib: <a class="reference external" href="http://www.matplotlib.org">http://www.matplotlib.org</a> - graphics library</p></li>
+</ul>
+</li>
+<li><p>Good support for</p>
+<ul>
+<li><p>Parallel processing with processes and threads</p></li>
+<li><p>Interprocess communication (MPI) (平行處理)</p></li>
+<li><p>GPU computing (OpenCL and CUDA) (顯示卡運算處理)</p></li>
+</ul>
+</li>
+<li><p>Readily available and suitable for use on high-performance computing clusters.</p></li>
+<li><p><strong>NO</strong> license costs, no unnecessary use of research budget.</p></li>
+</ul>
+<p><img alt="image.png" src="attachment:5368da2a-4382-4214-90ea-f442c3f3c5e8.png" /></p>
+<center>https://www.sharecourse.net/sharecourse/course/view/courseInfo/1942</center>
+</section>
+<section id="python-interpreters">
+<h2>Python interpreters 解譯器:<a class="headerlink" href="#python-interpreters" title="Permalink to this heading">#</a></h2>
+<p>The standard way to use the Python programming language is to use the Python interpreter to run python code. The python interpreter is a program that reads and execute the python code in files passed to it as arguments.</p>
+<p>At the command prompt, the command <code class="docutils literal notranslate"><span class="pre">python</span></code> is used to invoke the Python interpreter.
+For example, to run a file <code class="docutils literal notranslate"><span class="pre">my-program.py</span></code> that contains python code from the command prompt, use::</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ python my-program.py
+</pre></div>
+</div>
+<p><img alt="image.png" src="attachment:3546fed9-9e78-4230-8d21-1c5fd10a64a0.png" /></p>
+<section id="ipython">
+<h3>IPython<a class="headerlink" href="#ipython" title="Permalink to this heading">#</a></h3>
+<p>IPython is an interactive shell that addresses the limitation of the standard python interpreter, and it is a work-horse for scientific use of python. It provides an interactive prompt to the python interpreter with a greatly improved user-friendliness.</p>
+<p><img alt="image.png" src="attachment:aabeba8d-8d84-4236-8b46-28903106acd1.png" /></p>
+<p>Some of the many useful features of IPython includes:</p>
+<ul class="simple">
+<li><p>Command history, which can be browsed with the up and down arrows on the keyboard.</p></li>
+<li><p>Tab auto-completion.</p></li>
+<li><p>In-line editing of code.</p></li>
+<li><p>Object introspection, and automatic extract of documentation strings from python objects like classes and functions.</p></li>
+<li><p>Good interaction with operating system shell.</p></li>
+<li><p>Support for multiple parallel back-end processes, that can run on computing clusters or cloud services.</p></li>
+</ul>
+</section>
+<section id="jupyterlab">
+<h3>JupyterLab<a class="headerlink" href="#jupyterlab" title="Permalink to this heading">#</a></h3>
+<p>JupyterLab: 建構於網頁應用程式的整合開發環境，你可以使用它編寫notebook、操作終端、編輯markdown文本、打開交互模式、查看csv文件及圖片等功能。</p>
+<p><img alt="image.png" src="attachment:4455dbab-f97d-424c-97e8-55398343c7ab.png" /></p>
+<center>https://jupyter.org/</center>
+</section>
+<section id="jupyterlab-is-one-interface-used-to-create-and-interact-with-jupyter-notebooks">
+<h3>JupyterLab is one interface used to create and interact with Jupyter Notebooks.<a class="headerlink" href="#jupyterlab-is-one-interface-used-to-create-and-interact-with-jupyter-notebooks" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/stable/">Jupyter notebook</a> is an HTML-based notebook environment for Python, similar to Mathematica or Maple. It is based on the IPython shell, but provides a cell-based environment with great interactivity, where calculations can be organized and documented in a structured way.</p>
+<p>Notebook 建構於網頁應用程式的整合開發環境，可以邊做筆記邊撰寫程式、顯示程式輸出、圖形視覺化輸出、支援 Markdown 標記語言與 LaTex 數學方程式的文字段落。
+<img alt="image.png" src="attachment:c1461d0d-546a-4c8a-baf9-57bdcb37bf2b.png" /></p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="let-s-start-to-enjoy-python-in-jupyter-notebook">
+<h1>Let’s start to enjoy Python in jupyter-notebook<a class="headerlink" href="#let-s-start-to-enjoy-python-in-jupyter-notebook" title="Permalink to this heading">#</a></h1>
+<section id="note-in-jupyter-notebook">
+<h2>NOTE:  in Jupyter notebook<a class="headerlink" href="#note-in-jupyter-notebook" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong><font color=#03bafc> Ctrl-Enter</strong>  : run cell  執行這個cell</font></p></li>
+<li><p><strong>Shift-Enter</strong> : run cell, select below</p></li>
+<li><p><strong>Tab</strong>         : code completion or indent</p></li>
+<li><p><strong><font color=#03bafc> 執行過那個cell，每個Cell 前面會出現數字 </font></strong></p></li>
+</ul>
+</section>
+<section id="operators">
+<h2>Operators 運算子<a class="headerlink" href="#operators" title="Permalink to this heading">#</a></h2>
+<section id="arithmetic-operators">
+<h3>Arithmetic Operators 算術運算子<a class="headerlink" href="#arithmetic-operators" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Task Performed</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>+</p></td>
+<td><p>Addition</p></td>
+</tr>
+<tr class="row-odd"><td><p>-</p></td>
+<td><p>Subtraction</p></td>
+</tr>
+<tr class="row-even"><td><p>/</p></td>
+<td><p>division</p></td>
+</tr>
+<tr class="row-odd"><td><p>%</p></td>
+<td><p>mod</p></td>
+</tr>
+<tr class="row-even"><td><p>*</p></td>
+<td><p>multiplication</p></td>
+</tr>
+<tr class="row-odd"><td><p>//</p></td>
+<td><p>floor division</p></td>
+</tr>
+<tr class="row-even"><td><p>**</p></td>
+<td><p>to the power of</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span><span class="o">*</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="font-color-ff00ff-your-turn-font-11-3">
+<h3><font color=#ff00ff> Your turn: </font> 請計算 11/3<a class="headerlink" href="#font-color-ff00ff-your-turn-font-11-3" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h3><font color=#ff00ff> Your turn: </font> 請試11//3<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="font-color-ff00ff-your-turn-font-round-11-3">
+<h3><font color=#ff00ff> Your turn: </font> 請試round(11/3)<a class="headerlink" href="#font-color-ff00ff-your-turn-font-round-11-3" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h3><font color=#ff00ff> Your turn: </font> 請試11%3<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+<span class="mi">11</span><span class="o">%</span><span class="k">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="variables">
+<h2>Variables 變數<a class="headerlink" href="#variables" title="Permalink to this heading">#</a></h2>
+<p>A name that is used to denote something or a value is called a variable. In python, variables can be declared and values can be assigned to it as follows,</p>
+<section id="variable-assignments">
+<h3>variable assignments<a class="headerlink" href="#variable-assignments" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">405</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mf">214.6</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>619.6
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="type-variable-type">
+<h3><strong>type</strong>(variable) ==&gt; 知道這個變數是哪種type<a class="headerlink" href="#type-variable-type" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># complex numbers: note the use of `j` to specify the imaginary part</span>
+<span class="n">newx</span> <span class="o">=</span> <span class="mf">3.0</span> <span class="o">-</span> <span class="mf">1.0</span><span class="n">j</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">newx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>complex
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="multiple-variables-can-be-assigned-with-the-same-value">
+<h3>Multiple variables can be assigned with the same value.<a class="headerlink" href="#multiple-variables-can-be-assigned-with-the-same-value" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year1</span> <span class="o">=</span> <span class="n">year2</span> <span class="o">=</span> <span class="n">year3</span> <span class="o">=</span> <span class="mi">2008</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">year1</span><span class="p">,</span><span class="n">year2</span><span class="p">,</span> <span class="n">year3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2008 2008 2008
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="strings-are-the-variable-type-that-is-used-for-storing-text-messages">
+<h3><strong>Strings</strong>  are the variable type that is used for storing text messages.<a class="headerlink" href="#strings-are-the-variable-type-that-is-used-for-storing-text-messages" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Hello world&#39;</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># length of the string: the number of characters</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello world
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># try s.[tab]</span>
+<span class="n">s</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># replace a substring in a string with something else</span>
+<span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;world&quot;</span><span class="p">,</span> <span class="s2">&quot;earth&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Hello earth&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello world
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_new</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;world&quot;</span><span class="p">,</span> <span class="s2">&quot;earth&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s_new</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello earth
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="font-color-ff00ff-your-turn-font-5-happy-brithday">
+<h3><font color=#ff00ff> Your turn: </font> 請寫出5次 Happy Brithday!<a class="headerlink" href="#font-color-ff00ff-your-turn-font-5-happy-brithday" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-ways-patty-frequently-used">
+<h3>The ways Patty frequently used:<a class="headerlink" href="#the-ways-patty-frequently-used" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">usrdir</span> <span class="o">=</span> <span class="s2">&quot;/Users/pattylin&quot;</span>
+<span class="n">sourcedir</span> <span class="o">=</span> <span class="n">usrdir</span><span class="o">+</span><span class="s2">&quot;/PGS/&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sourcedir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/pattylin/PGS/
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="font-color-ff00ff-your-turn-font-5-3">
+<h3><font color=#ff00ff> Your turn: </font> 請利用** 計算<span class="math notranslate nohighlight">\(5^3\)</span><a class="headerlink" href="#font-color-ff00ff-your-turn-font-5-3" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[ \sqrt{3}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;sqrt&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[ \pi \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="import-a-module-in-python">
+<h2>Import a module 新增模組 in python<a class="headerlink" href="#import-a-module-in-python" title="Permalink to this heading">#</a></h2>
+<p>To use a module in a Python program it first has to be imported.</p>
+<p>A module can be imported using the <code class="docutils literal notranslate"><span class="pre">import</span></code> statement. For example, to import the module <code class="docutils literal notranslate"><span class="pre">numpy</span></code>:</p>
+<section id="numpy-multidimensional-data-arrays">
+<h3>模組#1 Numpy - multidimensional data arrays<a class="headerlink" href="#numpy-multidimensional-data-arrays" title="Permalink to this heading">#</a></h3>
+<section id="introduction">
+<h4>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">numpy</span></code> package (module) is used in almost all numerical computation using Python. It is a package that provide high-performance vector, matrix and higher-dimensional data structures for Python. It is implemented in C and Fortran so when calculations are vectorized (formulated with vectors and matrices), performance is very good.</p>
+</section>
+<section id="to-use-numpy-you-need-to-import-the-module-for-example">
+<h4>To use <code class="docutils literal notranslate"><span class="pre">numpy</span></code> you need to import the module, for example:<a class="headerlink" href="#to-use-numpy-you-need-to-import-the-module-for-example" title="Permalink to this heading">#</a></h4>
+<p>方法一：import [module] (as [name])</p>
+<p>當 module 本身的名字太長時、或是避免與原本的程式碼有名稱重複的狀況時，最常見的使用的方法之一</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">np</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>This includes the whole module and makes it available for use later in the program. For example, we can do:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="font-color-ff00ff-your-turn-font-sqrt-5">
+<h3><font color=#ff00ff> Your turn: </font> 請計算出 $<span class="math notranslate nohighlight">\( \sqrt{5}\)</span>$<a class="headerlink" href="#font-color-ff00ff-your-turn-font-sqrt-5" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write you code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="font-color-ff00ff-your-turn-font-e-0">
+<h3><font color=#ff00ff> Your turn: </font> 請計算出 $<span class="math notranslate nohighlight">\( e^0\)</span>$<a class="headerlink" href="#font-color-ff00ff-your-turn-font-e-0" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="font-color-ff00ff-your-turn-font-sin-0">
+<h3><font color=#ff00ff> Your turn: </font> 請試計算sin(0)<a class="headerlink" href="#font-color-ff00ff-your-turn-font-sin-0" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="font-color-ff00ff-your-turn-font-sin-90-90-o">
+<h3><font color=#ff00ff> Your turn: </font> 請試計算sin(90) 此為<span class="math notranslate nohighlight">\(90^o\)</span><a class="headerlink" href="#font-color-ff00ff-your-turn-font-sin-90-90-o" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="font-color-ee7700-in-calss-exercise-font-computing-with-formulas">
+<h2><font color=#EE7700> In-calss exercise: </font>  computing with formulas<a class="headerlink" href="#font-color-ee7700-in-calss-exercise-font-computing-with-formulas" title="Permalink to this heading">#</a></h2>
+<section id="example-from-the-lecture-about-propgating-of-errors-on-10-25">
+<h3>Example from the lecture about propgating of errors on 10/25<a class="headerlink" href="#example-from-the-lecture-about-propgating-of-errors-on-10-25" title="Permalink to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\( g =\frac{4\pi^2l}{T^2} \)</span></p>
+<p>we know <span class="math notranslate nohighlight">\( l= 92.95 \pm 0.10 \)</span> cm and <span class="math notranslate nohighlight">\( T= 1.936 \pm 0.004 \)</span>s</p>
+<p>please determine the  acceleration of gravity and its uncertainty in meters per second squared.</p>
+<p><strong><font color=#03bafc> Note :</font></strong>
+數值運算中 Python 遵循常見的次方優先、先乘除後加減等慣例，如果在算式中希望調整優先順序，<font color=#03bafc> 請都使用小括號 () </font>**</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dl</span> <span class="o">=</span> <span class="mf">0.1</span><span class="o">/</span><span class="mi">100</span>       <span class="c1"># convert unit from cm to m</span>
+<span class="n">lbest</span> <span class="o">=</span> <span class="mf">92.95</span><span class="o">/</span><span class="mi">100</span>  <span class="c1"># convert unit from cm to m</span>
+<span class="n">dT</span> <span class="o">=</span> <span class="mf">0.004</span>
+<span class="n">Tbest</span> <span class="o">=</span> <span class="mf">1.936</span>
+
+<span class="c1">#write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-structures">
+<h1>Data Structures 資料型態<a class="headerlink" href="#data-structures" title="Permalink to this heading">#</a></h1>
+<section id="compound-types-list-tuple-set-dictionary">
+<h2>Compound types:  List 串列, Tuple 元組, set 集合, dictionary 字典<a class="headerlink" href="#compound-types-list-tuple-set-dictionary" title="Permalink to this heading">#</a></h2>
+<p>In simple terms, It is the the collection or group of data in a particular structure.</p>
+</section>
+<section id="lists">
+<h2>Lists 串列<a class="headerlink" href="#lists" title="Permalink to this heading">#</a></h2>
+<p>Lists are the most commonly used data structure. Think of it as a sequence of data that is enclosed in square brackets and data are separated by a comma. Each of these data can be accessed by calling it’s index value.</p>
+<section id="lists-are-declared-by-just-equating-a-variable-to-or-del-list">
+<h3>Lists are declared by just equating a variable to ‘[ ]’ or del list.<a class="headerlink" href="#lists-are-declared-by-just-equating-a-variable-to-or-del-list" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="one-can-directly-assign-the-sequence-of-data-to-a-list-mylist-as-shown">
+<h3>One can directly assign the sequence of data to a list, mylist, as shown.<a class="headerlink" href="#one-can-directly-assign-the-sequence-of-data-to-a-list-mylist-as-shown" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-del-keyword-can-also-delete-the-list-completely">
+<h3>The del keyword can also delete the list completely<a class="headerlink" href="#the-del-keyword-can-also-delete-the-list-completely" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">mylist</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span> <span class="mi">21</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="len-find-the-length-of-the-list-or-the-number-of-elements-in-a-list">
+<h3>len() : find the length of the list or the number of elements in a list<a class="headerlink" href="#len-find-the-length-of-the-list-or-the-number-of-elements-in-a-list" title="Permalink to this heading">#</a></h3>
+<p>len 函數：得知字串、列表、字典、元組等長度</p>
+</section>
+<section id="font-color-ff00ff-your-turn-font-len-mylist">
+<h3><font color=#ff00ff> Your turn: </font> 請試試看 len(mylist)<a class="headerlink" href="#font-color-ff00ff-your-turn-font-len-mylist" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="indexing">
+<h3>Indexing<a class="headerlink" href="#indexing" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>In python, <strong>Indexing starts from 0</strong>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="font-color-ff00ff-your-turn-font-mylist-1">
+<h3><font color=#ff00ff> Your turn: </font> 請試試看 mylist[-1]<a class="headerlink" href="#font-color-ff00ff-your-turn-font-mylist-1" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write your code here </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="image-png-mylist-len-mylist-3">
+<h3><img alt="image.png" src="attachment:e4a9bc84-85fb-4259-bd73-7bb9d8ca6d8b.png" /> mylist[ len(mylist)-3 ] = ?<a class="headerlink" href="#image-png-mylist-len-mylist-3" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="creating-numpy-arrays">
+<h2>Creating <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays<a class="headerlink" href="#creating-numpy-arrays" title="Permalink to this heading">#</a></h2>
+<p>There are a number of ways to initialize new numpy arrays, for example from</p>
+<ul class="simple">
+<li><p>a Python list or tuples</p></li>
+<li><p>using functions that are dedicated to generating numpy arrays, such as <code class="docutils literal notranslate"><span class="pre">arange</span></code>, <code class="docutils literal notranslate"><span class="pre">linspace</span></code>, etc.</p></li>
+<li><p>reading data from files</p></li>
+</ul>
+<section id="from-1-lists">
+<h3>From (1) <em>lists</em><a class="headerlink" href="#from-1-lists" title="Permalink to this heading">#</a></h3>
+<p>For example, to create new vector and matrix arrays from Python lists we can use the <code class="docutils literal notranslate"><span class="pre">numpy.array</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a vector: the argument to the array function is a Python list</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">v</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="linear-algebra-scalar-array-operations">
+<h3>Linear algebra- Scalar-array operations<a class="headerlink" href="#linear-algebra-scalar-array-operations" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">v</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="font-color-ee7700-in-calss-exercise-font-play-with-np-array">
+<h2><font color=#EE7700> In-calss exercise: </font>  play with np.array<a class="headerlink" href="#font-color-ee7700-in-calss-exercise-font-play-with-np-array" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[ X = [3\quad 6\quad 7] \]</div>
+<div class="math notranslate nohighlight">
+\[ Y= [5\quad 8\quad 9] \]</div>
+<div class="math notranslate nohighlight">
+\[ Z = X+Y \]</div>
+<p>please print out Z</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>Creating <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<section id="from-2-array-generating-functions">
+<h3>From (2) <em>array-generating functions</em><a class="headerlink" href="#from-2-array-generating-functions" title="Permalink to this heading">#</a></h3>
+<p>For larger arrays it is inpractical to initialize the data manually, using explicit python lists. Instead we can use one of the many functions in <code class="docutils literal notranslate"><span class="pre">numpy</span></code> that generate arrays of different forms. Some of the more common are:</p>
+</section>
+<section id="arange">
+<h3>arange<a class="headerlink" href="#arange" title="Permalink to this heading">#</a></h3>
+<p>numpy.arange([start, ]stop, [step, ]dtype=None)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a range</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># arguments: start(include), stop(exclude), step</span>
+<span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="font-color-ff00ff-your-turn-font-np-arange-numpy-array-a-11-0-11">
+<h3><font color=#ff00ff> Your turn: </font> 請試試看用 np.arange 一個numpy array A 從-1到1，間隔0.1。這次我希望包含1，你會怎做？<a class="headerlink" href="#font-color-ff00ff-your-turn-font-np-arange-numpy-array-a-11-0-11" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="linspace">
+<h3>linspace<a class="headerlink" href="#linspace" title="Permalink to this heading">#</a></h3>
+<p>numpy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None, axis=0)</p>
+<p><em>using linspace, both end points ARE included</em></p>
+</section>
+<section id="font-color-ff00ff-your-turn-font-np-linspacenumpy-array-b-11-20">
+<h3><font color=#ff00ff> Your turn: </font> 請試試看用 np.linspace一個numpy array B 從-1到1，共20個數值。<a class="headerlink" href="#font-color-ff00ff-your-turn-font-np-linspacenumpy-array-b-11-20" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="font-color-ff00ff-your-turn-font-x-numpy-array-x05-5">
+<h2><font color=#ff00ff> Your turn: </font>請產生一個變數為 x 的numpy array，x從0到5，共5數值。<a class="headerlink" href="#font-color-ff00ff-your-turn-font-x-numpy-array-x05-5" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="font-color-ff00ff-your-turn-font-numpy-array-y-y-x-2">
+<h2><font color=#ff00ff> Your turn: </font> 再設一個numpy array, <span class="math notranslate nohighlight">\( y \)</span>, 讓 <span class="math notranslate nohighlight">\( y = x^2\)</span><a class="headerlink" href="#font-color-ff00ff-your-turn-font-numpy-array-y-y-x-2" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">這是個測試。</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="20221024_FUN02.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction to scientific computing with Python</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction to scientific computing with Python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources">Sources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-python">What is Python?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-makes-python-suitable-for-scientific-computing">What makes python suitable for scientific computing?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-interpreters">Python interpreters 解譯器:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipython">IPython</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab">JupyterLab</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab-is-one-interface-used-to-create-and-interact-with-jupyter-notebooks">JupyterLab is one interface used to create and interact with Jupyter Notebooks.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-start-to-enjoy-python-in-jupyter-notebook">Let’s start to enjoy Python in jupyter-notebook</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-in-jupyter-notebook">NOTE:  in Jupyter notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators">Operators 運算子</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-operators">Arithmetic Operators 算術運算子</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-11-3"><font color="#ff00ff"> Your turn: </font> 請計算 11/3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><font color="#ff00ff"> Your turn: </font> 請試11//3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-round-11-3"><font color="#ff00ff"> Your turn: </font> 請試round(11/3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><font color="#ff00ff"> Your turn: </font> 請試11%3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables 變數</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-assignments">variable assignments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-variable-type"><strong>type</strong>(variable) ==&gt; 知道這個變數是哪種type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-variables-can-be-assigned-with-the-same-value">Multiple variables can be assigned with the same value.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strings-are-the-variable-type-that-is-used-for-storing-text-messages"><strong>Strings</strong>  are the variable type that is used for storing text messages.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-5-happy-brithday"><font color="#ff00ff"> Your turn: </font> 請寫出5次 Happy Brithday!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-ways-patty-frequently-used">The ways Patty frequently used:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-5-3"><font color="#ff00ff"> Your turn: </font> 請利用** 計算<span class="math notranslate nohighlight">\(5^3\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-a-module-in-python">Import a module 新增模組 in python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-multidimensional-data-arrays">模組#1 Numpy - multidimensional data arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#to-use-numpy-you-need-to-import-the-module-for-example">To use <code class="docutils literal notranslate"><span class="pre">numpy</span></code> you need to import the module, for example:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-sqrt-5"><font color="#ff00ff"> Your turn: </font> 請計算出 $<span class="math notranslate nohighlight">\( \sqrt{5}\)</span>$</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-e-0"><font color="#ff00ff"> Your turn: </font> 請計算出 $<span class="math notranslate nohighlight">\( e^0\)</span>$</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-sin-0"><font color="#ff00ff"> Your turn: </font> 請試計算sin(0)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-sin-90-90-o"><font color="#ff00ff"> Your turn: </font> 請試計算sin(90) 此為<span class="math notranslate nohighlight">\(90^o\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ee7700-in-calss-exercise-font-computing-with-formulas"><font color="#EE7700"> In-calss exercise: </font>  computing with formulas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-from-the-lecture-about-propgating-of-errors-on-10-25">Example from the lecture about propgating of errors on 10/25</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structures">Data Structures 資料型態</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compound-types-list-tuple-set-dictionary">Compound types:  List 串列, Tuple 元組, set 集合, dictionary 字典</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists 串列</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists-are-declared-by-just-equating-a-variable-to-or-del-list">Lists are declared by just equating a variable to ‘[ ]’ or del list.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-can-directly-assign-the-sequence-of-data-to-a-list-mylist-as-shown">One can directly assign the sequence of data to a list, mylist, as shown.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-del-keyword-can-also-delete-the-list-completely">The del keyword can also delete the list completely</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#len-find-the-length-of-the-list-or-the-number-of-elements-in-a-list">len() : find the length of the list or the number of elements in a list</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-len-mylist"><font color="#ff00ff"> Your turn: </font> 請試試看 len(mylist)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing">Indexing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-mylist-1"><font color="#ff00ff"> Your turn: </font> 請試試看 mylist[-1]</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-png-mylist-len-mylist-3"> mylist[ len(mylist)-3 ] = ?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-numpy-arrays">Creating <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-1-lists">From (1) <em>lists</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-algebra-scalar-array-operations">Linear algebra- Scalar-array operations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ee7700-in-calss-exercise-font-play-with-np-array"><font color="#EE7700"> In-calss exercise: </font>  play with np.array</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Creating <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-2-array-generating-functions">From (2) <em>array-generating functions</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arange">arange</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-np-arange-numpy-array-a-11-0-11"><font color="#ff00ff"> Your turn: </font> 請試試看用 np.arange 一個numpy array A 從-1到1，間隔0.1。這次我希望包含1，你會怎做？</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linspace">linspace</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-np-linspacenumpy-array-b-11-20"><font color="#ff00ff"> Your turn: </font> 請試試看用 np.linspace一個numpy array B 從-1到1，共20個數值。</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-x-numpy-array-x05-5"><font color="#ff00ff"> Your turn: </font>請產生一個變數為 x 的numpy array，x從0到5，共5數值。</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-numpy-array-y-y-x-2"><font color="#ff00ff"> Your turn: </font> 再設一個numpy array, <span class="math notranslate nohighlight">\( y \)</span>, 讓 <span class="math notranslate nohighlight">\( y = x^2\)</span></a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ui-Ho Ang, Terry
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

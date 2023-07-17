@@ -1,0 +1,1744 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to scientific computing with Python &#8212; Data Analysis of Earth Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '20221107_FUN04_real';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Introduction to scientific computing with Python" href="20221024_FUN02.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    這是個測試。
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pythonFUN_01.html">Introduction to scientific computing with Python</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="20221024_FUN02.html">Introduction to scientific computing with Python</a></li>
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to scientific computing with Python</a></li>
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/pyrox-shin/da-es-work/HEAD/v2/gh/pyrox-shin/Data Analysis of Earth Science/main?urlpath=tree/docs/20221107_FUN04_real.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pyrox-shin/Data Analysis of Earth Science" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pyrox-shin/Data Analysis of Earth Science/issues/new?title=Issue%20on%20page%20%2F20221107_FUN04_real.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/20221107_FUN04_real.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to scientific computing with Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction to scientific computing with Python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-algebra-using-numpy-array">(1) matrix algebra using numpy.array</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-linear-regression">(2) simple linear regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops-and-if">(3) Loops and if</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sources">Sources</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-the-jupyter-notebook-in-jupyter-lab">NOTE: the Jupyter notebook in Jupyter Lab</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#import-1-module-in-python">Import 1 module 新增模組 in python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-800000-recap-1-numpy-font-multidimensional-data-arrays"><font color="#800000"> RECAP 模組#1 numpy  </font> - multidimensional data arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-we-need-to-use-numpy-how-can-we-import-it-as-np"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/> we need to use numpy , how can we import it as np</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-800000-recap-2-matplotlib-pyplot-font-plot-y-versus-x-as-lines-and-or-markers"><font color="#800000"> RECAP 模組#2 <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> 中的 pyplot </font> - Plot y versus x as lines and/or markers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-we-need-to-use-matplotlib-pyplot-how-can-we-import-it-as-plt"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/> we need to use matplotlib.pyplot , how can we import it as plt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><font color="#800000"> RECAP 模組#1 numpy  </font> - multidimensional data arrays</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-please-use-numpy-arry-to-generate-a-matrix-m"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/> please use numpy arry to generate a matrix, M</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-reminder">A reminder:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-this-class-we-use-np-array-https-numpy-org-doc-stable-reference-generated-numpy-array-html">* in this class, we use np.array  (https://numpy.org/doc/stable/reference/generated/numpy.array.html)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#we-are-not-using-np-matrix-in-this-class-https-numpy-org-doc-stable-reference-generated-numpy-matrix-html">* we are not using np.matrix in this class (https://numpy.org/doc/stable/reference/generated/numpy.matrix.html)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-matrix-m-dimemtion"><font color="#ff00ff"> Your turn: </font> 請查看看 matrix M 的dimemtion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-provides-many-convenience-functions-for-creating-matrices-vectors">NumPy provides many convenience functions for creating matrices/vectors.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#np-zeros-return-a-new-array-of-given-shape-filled-with-0">* np.zeros: Return a new array of given shape, filled with 0.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-python-array-b-array-c"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/> 請問在python 定義，array b 和 array c 的矩陣大小會怎描述？</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#np-ones-return-a-new-array-of-given-shape-filled-with-ones">* np.ones:  Return a new array of given shape, filled with ones.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#np-identity-return-the-identity-array">* np.identity:  Return the identity array.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-np-identity-5"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/> 請先想想，如果下 np.identity(5) 會出現怎樣的矩陣？</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#np-full-return-a-new-array-of-given-shape-filled-with-fill-value">* np.full:  Return a new array of given shape, filled with fill_value.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#np-diag-construct-a-diagonal-array-with-the-values">* np.diag:  construct a diagonal array with the values.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-712-10x10-w"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/> 如何產生一個對角線都是 712 的 10x10矩陣, W？</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-array-generate-a-matrix-m-way-2">Numpy array : generate a matrix M: way#2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#we-can-also-create-v1-v2-v3-by-vector-and-then-use-np-vstack">* we can also create v1,v2,v3 by vector and then use <code class="docutils literal notranslate"><span class="pre">np.vstack</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ee7700-in-calss-exercise-font"><font color="#EE7700"> In-calss exercise </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#please-set-2-np-arrays-m-and-v">please set 2 np-arrays, M and v</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#np-dot-dot-product-of-two-arrays-specifically">* np.dot: Dot product of two arrays. Specifically,</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication"><code class="docutils literal notranslate"><span class="pre">Matrix</span> <span class="pre">Multiplication</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-np-dot-way-1">using np.dot way #1:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-np-dot-way-2">using np.dot way #2:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transpose-of-matrix"><code class="docutils literal notranslate"><span class="pre">transpose</span> <span class="pre">of</span> <span class="pre">Matrix</span> </code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-ndarray-t-the-transposed-array">* numpy.ndarray.T: The transposed array.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-determinant"><code class="docutils literal notranslate"><span class="pre">Matrix</span> <span class="pre">Determinant</span> <span class="pre">行列式</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-linalg-det-a-compute-the-determinant-of-an-array">* numpy.linalg.det(a): Compute the determinant of an array</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-of-a-matrix"><code class="docutils literal notranslate"><span class="pre">Inverse</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">matrix</span>  </code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#np-linalg-inv-compute-the-multiplicative-inverse-of-a-matrix">* np.linalg.inv: Compute the (multiplicative) inverse of a matrix.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#please-generate-a-matrix-mathbf-a-begin-bmatrix-7-2-10-3-end-bmatrix">please generate a matrix $<span class="math notranslate nohighlight">\( \mathbf A  = \begin{bmatrix} 7 &amp; 2 \\ 10 &amp; 3  \end{bmatrix}\)</span>$</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><font color="#EE7700"> In-calss exercise </font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#please-write-a-python-code-to-get">please write a python code to get</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-800000-recap-3-pandas-font-data-analysis-and-manipulation-tool"><font color="#800000"> RECAP 模組#3 pandas </font> - data analysis and manipulation tool</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-we-need-to-use-pandas-how-can-we-import-it-as-pd"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/> we need to use pandas, how can we import it as pd</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-466910-2022-09-csv-pandas-pd-dataframe"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/> 請將466910-2022-09.csv 用 pandas 讀進來成一個變數名為 pd 的dataframe</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-data-table-representation">pandas data table representation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ee7700-2022-10-31-in-calss-exercise-font"><font color="#EE7700"> 2022/10/31 In-calss exercise  </font></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-figure-with-one-pannl">(1) make a figure with one pannl</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-temperature-tmax-in-x-y-scatter-plot">(2) plot (Temperature, Tmax) in x-y scatter plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-font-color-800000-recap-font-how-can-we-get-the-temperature-values"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/> <font color="#800000"> RECAP: </font>  how can we get the ‘Temperature’ values?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-now-how-can-we-set-the-values-in-these-2-columns-temperature-t-max-as-2-numpy-arrays-temp-and-tmax"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/> now,   how can we set the values in these 2 columns, <code class="docutils literal notranslate"><span class="pre">Temperature</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">Max</span></code> as 2 numpy arrays, Temp and Tmax？</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-regression">Simple Regression</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#over-determined-problem">over-determined  problem :</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#center-the-least-squares-solution-center"><center>The least squares solution </center></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-mathbf-g-begin-bmatrix-1-x-1-1-x-2-vdots-vdots-1-x-n-end-bmatrix"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/>如何產生 $<span class="math notranslate nohighlight">\( \mathbf G  = \begin{bmatrix} 1 &amp; x_1 \\ 1 &amp; x_2  \\ \vdots  &amp; \vdots \\ 1 &amp; x_n  \end{bmatrix}\)</span>$</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/>如何可以變成 $<span class="math notranslate nohighlight">\( \mathbf G  = \begin{bmatrix} 1 &amp; x_1 \\ 1 &amp; x_2  \\ \vdots  &amp; \vdots \\ 1 &amp; x_n  \end{bmatrix}\)</span>$</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-similary-please-write-d-matrix"><font color="#ff00ff"> Your turn: </font> similary, please write d matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><center>The least squares solution  </center></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-please-get-m"><font color="#ff00ff"> Your turn: </font>  please get m</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-regression-line">PLOT regression line</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step1">step1:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step2">step2:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step3">step3:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step4">step4:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step5">step5:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step6">step6:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-summary">In summary</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#loops">Loops 迴圈</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loops"><code class="docutils literal notranslate"><span class="pre">for</span></code> loops:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loop">單層 for-loop:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">巢狀for-loop</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loop-enumerate">for loop 中，使用enumerate() 可以自動加入索引</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enumerate">* enumerate() 函數</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split">* split()函數用法</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-loops"><code class="docutils literal notranslate"><span class="pre">while</span></code> loops:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#control-flow-statements">Control Flow Statements</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if">if</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-else">If-else</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-elseif-else">If-elseif-else</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><font color="#EE7700"> In-calss exercise </font></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives"><code class="docutils literal notranslate"><span class="pre">Objectives</span></code>: 從觀測資料回歸得到海床的深度與其板塊年齡的平方根的關係</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step0-filename-waterdepth-age2-csv-pd-read-csv">step0: 請將檔案,filename = “WaterDepth_age2.csv”,內容用pd.read_csv正確讀入？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step1-age-depth">step1: 畫出橫軸為age,縱軸為depth的圖。</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-scientific-computing-with-python">
+<h1>Introduction to scientific computing with Python<a class="headerlink" href="#introduction-to-scientific-computing-with-python" title="Permalink to this heading">#</a></h1>
+<section id="matrix-algebra-using-numpy-array">
+<h2>(1) matrix algebra using numpy.array<a class="headerlink" href="#matrix-algebra-using-numpy-array" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="simple-linear-regression">
+<h2>(2) simple linear regression<a class="headerlink" href="#simple-linear-regression" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="loops-and-if">
+<h2>(3) Loops and if<a class="headerlink" href="#loops-and-if" title="Permalink to this heading">#</a></h2>
+<p>by pylin.patty  2022/11/07, 2021/11/28, 2020/11/09, and 2020/10/26</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="sources">
+<h1>Sources<a class="headerlink" href="#sources" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.taiwancodeschool.com/single-post/2018/09/05/Python-for-while">https://www.taiwancodeschool.com/single-post/2018/09/05/Python-for-while</a></p></li>
+</ul>
+<section id="note-the-jupyter-notebook-in-jupyter-lab">
+<h2>NOTE: the Jupyter notebook in Jupyter Lab<a class="headerlink" href="#note-the-jupyter-notebook-in-jupyter-lab" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong><font color=#03bafc> Ctrl-Enter</strong>  : run cell  執行這個cell</font></p></li>
+<li><p><strong>Shift-Enter</strong> : run cell, select below</p></li>
+<li><p><strong><font color=#03bafc> 執行過那個cell，每個Cell 前面會出現數字 </font></strong></p></li>
+<li><p>you can also install Jupyter Lab extension (外掛) - ex: cell-toolbar</p></li>
+<li><p><span style='color:red '><strong>Tab</strong>    </span>        : code completion or indent</p></li>
+<li><p><span style='color:red '><strong>type</strong>(vaiable) </span> : it returns type of the given variable 查詢變數的資料形態</p></li>
+<li><p><span style='color:red '>[Ctrl]+ /  in windows ; [command] +/ in mac </span> :  add the hash character, #, in the beginning of the line to comment the line.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="import-1-module-in-python">
+<h1>Import 1 module 新增模組 in python<a class="headerlink" href="#import-1-module-in-python" title="Permalink to this heading">#</a></h1>
+<section id="font-color-800000-recap-1-numpy-font-multidimensional-data-arrays">
+<h2><font color=#800000> RECAP 模組#1 numpy  </font> - multidimensional data arrays<a class="headerlink" href="#font-color-800000-recap-1-numpy-font-multidimensional-data-arrays" title="Permalink to this heading">#</a></h2>
+<section id="img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-we-need-to-use-numpy-how-can-we-import-it-as-np">
+<h3><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"> we need to use numpy , how can we import it as np<a class="headerlink" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-we-need-to-use-numpy-how-can-we-import-it-as-np" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="font-color-800000-recap-2-matplotlib-pyplot-font-plot-y-versus-x-as-lines-and-or-markers">
+<h2><font color=#800000> RECAP 模組#2 <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> 中的 pyplot </font> - Plot y versus x as lines and/or markers<a class="headerlink" href="#font-color-800000-recap-2-matplotlib-pyplot-font-plot-y-versus-x-as-lines-and-or-markers" title="Permalink to this heading">#</a></h2>
+<section id="img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-we-need-to-use-matplotlib-pyplot-how-can-we-import-it-as-plt">
+<h3><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"> we need to use matplotlib.pyplot , how can we import it as plt<a class="headerlink" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-we-need-to-use-matplotlib-pyplot-how-can-we-import-it-as-plt" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><font color=#800000> RECAP 模組#1 numpy  </font> - multidimensional data arrays<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<section id="img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-please-use-numpy-arry-to-generate-a-matrix-m">
+<h2><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"> please use numpy arry to generate a matrix, M<a class="headerlink" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-please-use-numpy-arry-to-generate-a-matrix-m" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split} M = \begin{bmatrix}1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 9\end{bmatrix} \end{split}\]</div>
+</section>
+<section id="a-reminder">
+<h2>A reminder:<a class="headerlink" href="#a-reminder" title="Permalink to this heading">#</a></h2>
+<p>there are many ways to generate a matrix in python. just make it simpler,</p>
+<section id="in-this-class-we-use-np-array-https-numpy-org-doc-stable-reference-generated-numpy-array-html">
+<h3>* in this class, we use np.array  (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.array.html">https://numpy.org/doc/stable/reference/generated/numpy.array.html</a>)<a class="headerlink" href="#in-this-class-we-use-np-array-https-numpy-org-doc-stable-reference-generated-numpy-array-html" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="we-are-not-using-np-matrix-in-this-class-https-numpy-org-doc-stable-reference-generated-numpy-matrix-html">
+<h3>* we are not using np.matrix in this class (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.matrix.html">https://numpy.org/doc/stable/reference/generated/numpy.matrix.html</a>)<a class="headerlink" href="#we-are-not-using-np-matrix-in-this-class-https-numpy-org-doc-stable-reference-generated-numpy-matrix-html" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+<span class="n">M</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span> <span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># write your code here</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">M</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span> <span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;np&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="font-color-ff00ff-your-turn-font-matrix-m-dimemtion">
+<h2><font color=#ff00ff> Your turn: </font> 請查看看 matrix M 的dimemtion<a class="headerlink" href="#font-color-ff00ff-your-turn-font-matrix-m-dimemtion" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="numpy-provides-many-convenience-functions-for-creating-matrices-vectors">
+<h2>NumPy provides many convenience functions for creating matrices/vectors.<a class="headerlink" href="#numpy-provides-many-convenience-functions-for-creating-matrices-vectors" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>more details: <a class="reference external" href="https://numpy.org/doc/stable/reference/routines.array-creation.html">https://numpy.org/doc/stable/reference/routines.array-creation.html</a></p></li>
+</ul>
+<p>such as</p>
+<section id="np-zeros-return-a-new-array-of-given-shape-filled-with-0">
+<h3>* np.zeros: Return a new array of given shape, filled with 0.<a class="headerlink" href="#np-zeros-return-a-new-array-of-given-shape-filled-with-0" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">a</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">c</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-python-array-b-array-c">
+<h3><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"> 請問在python 定義，array b 和 array c 的矩陣大小會怎描述？<a class="headerlink" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-python-array-b-array-c" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># try by yourself</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="np-ones-return-a-new-array-of-given-shape-filled-with-ones">
+<h3>* np.ones:  Return a new array of given shape, filled with ones.<a class="headerlink" href="#np-ones-return-a-new-array-of-given-shape-filled-with-ones" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># type your own</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="np-identity-return-the-identity-array">
+<h3>* np.identity:  Return the identity array.<a class="headerlink" href="#np-identity-return-the-identity-array" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-np-identity-5">
+<h3><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"> 請先想想，如果下 np.identity(5) 會出現怎樣的矩陣？<a class="headerlink" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-np-identity-5" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># try your own</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="np-full-return-a-new-array-of-given-shape-filled-with-fill-value">
+<h3>* np.full:  Return a new array of given shape, filled with fill_value.<a class="headerlink" href="#np-full-return-a-new-array-of-given-shape-filled-with-fill-value" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="mi">712</span><span class="p">)</span> <span class="c1"># ((shape), fill_value)</span>
+<span class="n">d</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="np-diag-construct-a-diagonal-array-with-the-values">
+<h3>* np.diag:  construct a diagonal array with the values.<a class="headerlink" href="#np-diag-construct-a-diagonal-array-with-the-values" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>
+<span class="n">w</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-712-10x10-w">
+<h3><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"> 如何產生一個對角線都是 712 的 10x10矩陣, W？<a class="headerlink" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-712-10x10-w" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">W</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="numpy-array-generate-a-matrix-m-way-2">
+<h2>Numpy array : generate a matrix M: way#2<a class="headerlink" href="#numpy-array-generate-a-matrix-m-way-2" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split} M = \begin{bmatrix}1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 9\end{bmatrix} \end{split}\]</div>
+<section id="we-can-also-create-v1-v2-v3-by-vector-and-then-use-np-vstack">
+<h3>* we can also create v1,v2,v3 by vector and then use <code class="docutils literal notranslate"><span class="pre">np.vstack</span></code><a class="headerlink" href="#we-can-also-create-v1-v2-v3-by-vector-and-then-use-np-vstack" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">v3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="c1"># type your own</span>
+
+
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="font-color-ee7700-in-calss-exercise-font">
+<h2><font color=#EE7700> In-calss exercise </font><a class="headerlink" href="#font-color-ee7700-in-calss-exercise-font" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="please-set-2-np-arrays-m-and-v">
+<h2>please set 2 np-arrays, M and v<a class="headerlink" href="#please-set-2-np-arrays-m-and-v" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split} M = \begin{bmatrix}32 &amp; 25 &amp; 124 \\ 7 &amp; 3 &amp; 5 \\ 214 &amp; 2 &amp; 32\end{bmatrix} , v= \begin{bmatrix}3 \\ 21\\ 5 \end{bmatrix}\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+
+
+
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">M</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">M</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="np-dot-dot-product-of-two-arrays-specifically">
+<h3>* np.dot: Dot product of two arrays. Specifically,<a class="headerlink" href="#np-dot-dot-product-of-two-arrays-specifically" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>If both a and b are 1-D arrays, it is inner product of vectors (without complex conjugation).</p></li>
+<li><p>If both a and b are 2-D arrays, it is matrix multiplication, but using matmul or a &#64; b is preferred.</p></li>
+</ul>
+<p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.dot.html">https://numpy.org/doc/stable/reference/generated/numpy.dot.html</a></p>
+</section>
+<section id="matrix-multiplication">
+<h3><code class="docutils literal notranslate"><span class="pre">Matrix</span> <span class="pre">Multiplication</span></code><a class="headerlink" href="#matrix-multiplication" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[ \mathbf c_{(3,1)} = \mathbf M_{(3,3)} \mathbf v_{(3,1)} \]</div>
+<section id="using-np-dot-way-1">
+<h4>using np.dot way #1:<a class="headerlink" href="#using-np-dot-way-1" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># type here</span>
+
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-np-dot-way-2">
+<h4>using np.dot way #2:<a class="headerlink" href="#using-np-dot-way-2" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># type here</span>
+
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="transpose-of-matrix">
+<h3><code class="docutils literal notranslate"><span class="pre">transpose</span> <span class="pre">of</span> <span class="pre">Matrix</span> </code><a class="headerlink" href="#transpose-of-matrix" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[ \mathbf  M^{\mathbf T} \]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split} M = \begin{bmatrix}32 &amp; 25 &amp; 124 \\ 7 &amp; 3 &amp; 5 \\ 214 &amp; 2 &amp; 32\end{bmatrix} \end{split}\]</div>
+</section>
+<section id="numpy-ndarray-t-the-transposed-array">
+<h3>* numpy.ndarray.T: The transposed array.<a class="headerlink" href="#numpy-ndarray-t-the-transposed-array" title="Permalink to this heading">#</a></h3>
+<p>more detials: <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.T.html">https://numpy.org/doc/stable/reference/generated/numpy.ndarray.T.html</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># type here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transposeM</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">transposeM</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="matrix-determinant">
+<h3><code class="docutils literal notranslate"><span class="pre">Matrix</span> <span class="pre">Determinant</span> <span class="pre">行列式</span></code><a class="headerlink" href="#matrix-determinant" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split} |\mathbf M | = \begin{vmatrix} a_{11} &amp; a_{12} &amp;a_{13}\\ a_{21} &amp; a_{22} &amp; a_{23} \\ a_{31} &amp; a_{32} &amp; a_{33} \end{vmatrix}\end{split}\]</div>
+</section>
+<section id="numpy-linalg-det-a-compute-the-determinant-of-an-array">
+<h3>* numpy.linalg.det(a): Compute the determinant of an array<a class="headerlink" href="#numpy-linalg-det-a-compute-the-determinant-of-an-array" title="Permalink to this heading">#</a></h3>
+<p>more details: <a class="reference external" href="https://numpy.org/doc/stable/reference/routines.linalg.html">https://numpy.org/doc/stable/reference/routines.linalg.html</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># type here</span>
+
+
+
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">detM</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">detM</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">detM</span><span class="p">,</span><span class="n">decimals</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#Evenly round to the given number of decimals.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">detM</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="inverse-of-a-matrix">
+<h2><code class="docutils literal notranslate"><span class="pre">Inverse</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">matrix</span>&#160; </code><a class="headerlink" href="#inverse-of-a-matrix" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[ \mathbf  A^{-1} \]</div>
+<section id="np-linalg-inv-compute-the-multiplicative-inverse-of-a-matrix">
+<h3>* np.linalg.inv: Compute the (multiplicative) inverse of a matrix.<a class="headerlink" href="#np-linalg-inv-compute-the-multiplicative-inverse-of-a-matrix" title="Permalink to this heading">#</a></h3>
+<p>more details: <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.linalg.inv.html">https://numpy.org/doc/stable/reference/generated/numpy.linalg.inv.html</a></p>
+<section id="please-generate-a-matrix-mathbf-a-begin-bmatrix-7-2-10-3-end-bmatrix">
+<h4>please generate a matrix $<span class="math notranslate nohighlight">\( \mathbf A  = \begin{bmatrix} 7 &amp; 2 \\ 10 &amp; 3  \end{bmatrix}\)</span>$<a class="headerlink" href="#please-generate-a-matrix-mathbf-a-begin-bmatrix-7-2-10-3-end-bmatrix" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+
+
+
+
+<span class="n">A</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write your code here</span>
+<span class="n">inverseA</span> <span class="o">=</span> 
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">inverseA</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="id2">
+<h2><font color=#EE7700> In-calss exercise </font><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>A system of n simultaneous equations in n unknowns can be written
+$<span class="math notranslate nohighlight">\( a_{11}x_1 + a_{12}x_2+a_{13}x_3+...+a_{1n}x_n = b_1 \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( a_{21}x_1 + a_{22}x_2+a_{23}x_3+...+a_{2n}x_n = b_2 \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( a_{31}x_1 + a_{32}x_2+a_{33}x_3+...+a_{3n}x_n = b_3 \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( : \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( a_{n1}x_1 + a_{n2}x_2+a_{n3}x_3+...+a_{nn}x_n = b_n \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( \mathbf A \mathbf x  = \mathbf b \)</span>$</p>
+<p>In today’s lecture, we know
+$<span class="math notranslate nohighlight">\( \mathbf x = \mathbf A^{-1} \mathbf b \)</span>$</p>
+<p>again, let’s try the example which we did in the today’s lecture</p>
+<div class="math notranslate nohighlight">
+\[ 5x_1 + 7x_{2} = 19 \]</div>
+<div class="math notranslate nohighlight">
+\[ 3x_1 - 2x_{2} = -1 \]</div>
+<section id="please-write-a-python-code-to-get">
+<h3>please write a python code to get<a class="headerlink" href="#please-write-a-python-code-to-get" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split} \mathbf x = \begin{bmatrix} x_1 \\ x_2  \end{bmatrix}\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="font-color-800000-recap-3-pandas-font-data-analysis-and-manipulation-tool">
+<h2><font color=#800000> RECAP 模組#3 pandas </font> - data analysis and manipulation tool<a class="headerlink" href="#font-color-800000-recap-3-pandas-font-data-analysis-and-manipulation-tool" title="Permalink to this heading">#</a></h2>
+<section id="img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-we-need-to-use-pandas-how-can-we-import-it-as-pd">
+<h3><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"> we need to use pandas, how can we import it as pd<a class="headerlink" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-we-need-to-use-pandas-how-can-we-import-it-as-pd" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-466910-2022-09-csv-pandas-pd-dataframe">
+<h3><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"> 請將466910-2022-09.csv 用 pandas 讀進來成一個變數名為 pd 的dataframe<a class="headerlink" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-466910-2022-09-csv-pandas-pd-dataframe" title="Permalink to this heading">#</a></h3>
+<p>The source of the data is: <a class="reference external" href="https://e-service.cwb.gov.tw/HistoryDataQuery/MonthDataController.do?command=viewMain&amp;amp;station=466930&amp;amp;stname=%25E7%25AB%25B9%25E5%25AD%2590%25E6%25B9%2596&amp;amp;datepicker=2021-10">https://e-service.cwb.gov.tw/HistoryDataQuery/MonthDataController.do?command=viewMain&amp;station=466930&amp;stname=%25E7%25AB%25B9%25E5%25AD%2590%25E6%25B9%2596&amp;datepicker=2021-10</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># copy the code from last week</span>
+
+
+
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="pandas-data-table-representation">
+<h2>pandas data table representation<a class="headerlink" href="#pandas-data-table-representation" title="Permalink to this heading">#</a></h2>
+<img src="attachment:389e4754-a12f-4fb8-921d-1fb6aa8cf182.png" width="300px">
+https://pandas.pydata.org/docs/getting_started/intro_tutorials/01_table_oriented.html#min-tut-01-tableoriented</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="font-color-ee7700-2022-10-31-in-calss-exercise-font">
+<h1><font color=#EE7700> 2022/10/31 In-calss exercise  </font><a class="headerlink" href="#font-color-ee7700-2022-10-31-in-calss-exercise-font" title="Permalink to this heading">#</a></h1>
+<section id="make-a-figure-with-one-pannl">
+<h2>(1) make a figure with one pannl<a class="headerlink" href="#make-a-figure-with-one-pannl" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="plot-temperature-tmax-in-x-y-scatter-plot">
+<h2>(2) plot (Temperature, Tmax) in x-y scatter plot<a class="headerlink" href="#plot-temperature-tmax-in-x-y-scatter-plot" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/version/0.25.0/reference/api/pandas.DataFrame.plot.scatter.html">https://pandas.pydata.org/pandas-docs/version/0.25.0/reference/api/pandas.DataFrame.plot.scatter.html</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Patty&#39;s code</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">MultipleLocator</span>
+
+<span class="n">InputFile</span> <span class="o">=</span> <span class="s2">&quot;466910-2022-09.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">InputFile</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">fig1</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Temperature&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;T Max&#39;</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-font-color-800000-recap-font-how-can-we-get-the-temperature-values">
+<h2><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px">  <font color=#800000> RECAP: </font>  how can we get the ‘Temperature’ values?<a class="headerlink" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-font-color-800000-recap-font-how-can-we-get-the-temperature-values" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Temperature&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-now-how-can-we-set-the-values-in-these-2-columns-temperature-t-max-as-2-numpy-arrays-temp-and-tmax">
+<h2><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"> now,   how can we set the values in these 2 columns, <code class="docutils literal notranslate"><span class="pre">Temperature</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">Max</span></code> as 2 numpy arrays, Temp and Tmax？<a class="headerlink" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-now-how-can-we-set-the-values-in-these-2-columns-temperature-t-max-as-2-numpy-arrays-temp-and-tmax" title="Permalink to this heading">#</a></h2>
+<p>如何把值設成一個numpy array？</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># type your coode here</span>
+
+
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Temp</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">Temp</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Tmax</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">Tmax</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="simple-regression">
+<h1>Simple Regression<a class="headerlink" href="#simple-regression" title="Permalink to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[ y = m_0+m_1 x \]</div>
+<center> where $ x $ = Temp & $ y $ = Tmax</center>
+<div class="math notranslate nohighlight">
+\[\begin{split} \mathbf G  = \begin{bmatrix} 1 &amp; x_1 \\ 1 &amp; x_2  \\ \vdots  &amp; \vdots \\ 1 &amp; x_n  \end{bmatrix}, 
+\mathbf m= \begin{bmatrix} m_0\\ m_1 \end{bmatrix}, \mathbf d  = \begin{bmatrix} y_1\\ y_2 \\ \vdots \\ y_n  \end{bmatrix}\end{split}\]</div>
+<p>solve for
+$<span class="math notranslate nohighlight">\( \mathbf m \)</span>$</p>
+<section id="over-determined-problem">
+<h2>over-determined  problem :<a class="headerlink" href="#over-determined-problem" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="center-the-least-squares-solution-center">
+<h2><center>The least squares solution </center><a class="headerlink" href="#center-the-least-squares-solution-center" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[ \mathbf m = [\mathbf G^{\mathbf T}\mathbf G]^{-1}\mathbf G^{\mathbf T}\mathbf d  \]</div>
+</section>
+<section id="img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-mathbf-g-begin-bmatrix-1-x-1-1-x-2-vdots-vdots-1-x-n-end-bmatrix">
+<h2><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px">如何產生 $<span class="math notranslate nohighlight">\( \mathbf G  = \begin{bmatrix} 1 &amp; x_1 \\ 1 &amp; x_2  \\ \vdots  &amp; \vdots \\ 1 &amp; x_n  \end{bmatrix}\)</span>$<a class="headerlink" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-mathbf-g-begin-bmatrix-1-x-1-1-x-2-vdots-vdots-1-x-n-end-bmatrix" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">Temp</span> 
+<span class="n">y</span><span class="o">=</span><span class="n">Tmax</span>
+
+<span class="c1"># type your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>現在 $<span class="math notranslate nohighlight">\( \mathbf G  = \begin{bmatrix} 1 &amp; 1 &amp;  \dots  &amp;1 \\ x_1 &amp; x_2 &amp;\dots &amp; x_n \end{bmatrix}\)</span>$</p>
+</section>
+<section id="id3">
+<h2><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px">如何可以變成 $<span class="math notranslate nohighlight">\( \mathbf G  = \begin{bmatrix} 1 &amp; x_1 \\ 1 &amp; x_2  \\ \vdots  &amp; \vdots \\ 1 &amp; x_n  \end{bmatrix}\)</span>$<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="font-color-ff00ff-your-turn-font-similary-please-write-d-matrix">
+<h2><font color=#ff00ff> Your turn: </font> similary, please write d matrix<a class="headerlink" href="#font-color-ff00ff-your-turn-font-similary-please-write-d-matrix" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+
+
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id4">
+<h2><center>The least squares solution  </center><a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[ \mathbf m = [\mathbf G^{\mathbf T}\mathbf G]^{-1}\mathbf G^{\mathbf T}\mathbf d  \]</div>
+</section>
+<section id="font-color-ff00ff-your-turn-font-please-get-m">
+<h2><font color=#ff00ff> Your turn: </font>  please get m<a class="headerlink" href="#font-color-ff00ff-your-turn-font-please-get-m" title="Permalink to this heading">#</a></h2>
+<p>recap:</p>
+<ul class="simple">
+<li><p>Matrix Multiplication      — <span class="math notranslate nohighlight">\( \mathbf Z \mathbf {v} \)</span>:            Z.dot(v)</p></li>
+<li><p>Transpose of a matrix   — <span class="math notranslate nohighlight">\( \mathbf G^{\mathbf T} \)</span>:          G.T</p></li>
+<li><p>Inverse of a matrix     — <span class="math notranslate nohighlight">\( \mathbf G^{-1} \)</span>:                 np.linalg.inv(G)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write your code hre</span>
+
+
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-regression-line">
+<h2>PLOT regression line<a class="headerlink" href="#plot-regression-line" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[ y = m_0+m_1 x \]</div>
+<div class="math notranslate nohighlight">
+\[ m[0] = m_0 ;m[1] = m_1  \]</div>
+<section id="step1">
+<h3>step1:<a class="headerlink" href="#step1" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>generate an xx array form xmin to xmax with 100 elements.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xx</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">xx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step2">
+<h3>step2:<a class="headerlink" href="#step2" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>calculate yy according to the regesion equaiotn</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+<span class="n">yy</span><span class="o">=</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">yy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step3">
+<h3>step3:<a class="headerlink" href="#step3" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>plot regression line</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig1</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Temperature&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;T Max&#39;</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+
+<span class="c1"># write your code here</span>
+
+
+
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step4">
+<h3>step4:<a class="headerlink" href="#step4" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>ADD label for regression line</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig1</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Temperature&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;T Max&#39;</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+
+<span class="c1"># plot regression line  </span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span><span class="s1">&#39;b-&#39;</span><span class="p">,</span>
+         <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$Tmax=</span><span class="si">{0:8.2f}</span><span class="s2">+</span><span class="si">{1:8.2f}</span><span class="s2">Temp$&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="nb">float</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span> 
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>  <span class="c1"># plot regression line  </span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Temp ($^\circ$)  &#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Tmax ($^\circ$)&#39;</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step5">
+<h3>step5:<a class="headerlink" href="#step5" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>caluculate the total misfit   E</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ E =  \sum_{i=1}^{n}(\mathbf e_i)^2=  \sum_{i=1}^{n}(\mathbf d - \mathbf G \mathbf m )^2\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+
+
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;totoal misfit E: &quot;</span><span class="p">,</span> <span class="n">E</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step6">
+<h3>step6:<a class="headerlink" href="#step6" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>caluculate the correlation coefficient</p></li>
+</ul>
+<p>About <span class="math notranslate nohighlight">\( R^2 \)</span> percent of the variance is accounted for
+$<span class="math notranslate nohighlight">\( R^2 = 1-E / \sum_{i=1}^{n} (d-mean(d))^2 \)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code</span>
+
+<span class="n">RR</span> <span class="o">=</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="n">RR</span><span class="p">)</span>
+
+<span class="c1"># means ~39 percent of the variance can be accounted for with a model</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="in-summary">
+<h2>In summary<a class="headerlink" href="#in-summary" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#you can copy-paste all the codes here. </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="loops">
+<h1>Loops 迴圈<a class="headerlink" href="#loops" title="Permalink to this heading">#</a></h1>
+<p>迴圈 (loop) 的作用是讓某幾行指令在條件符合的情況下一直重覆執行</p>
+<p>In Python, loops can be programmed in a number of different ways. The most common is the for loop, which is used together with iterable objects, such as lists. The basic syntax is:</p>
+<section id="for-loops">
+<h2><code class="docutils literal notranslate"><span class="pre">for</span></code> loops:<a class="headerlink" href="#for-loops" title="Permalink to this heading">#</a></h2>
+<p>通常是很明確知道要跑「幾次」的這幾行指令。</p>
+<section id="for-loop">
+<h3>單層 for-loop:<a class="headerlink" href="#for-loop" title="Permalink to this heading">#</a></h3>
+<p>for 和 in 是 Python 的關鍵字，in的後面則可接一個序列 (Sequence)，迴圈會依序從序列 (例如: 一連串清單資料，一組數字或一個名單) 裡取得元素，並將元素指派給前面自訂的變數，然後執行迴圈裡的內容</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;banana&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;patty likes to eat &quot;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Patty&#39;s favorite fruit listed above&quot;</span>  <span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id5">
+<h3>巢狀for-loop<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>巢狀迴圈的特性是在迴圈裡面又包覆著其他的迴圈。
+外層迴圈每動作一次，內層迴圈就會把整個迴圈執行一遍，執行完畢後才跳回到外層迴圈。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;patty&#39;</span><span class="p">,</span> <span class="s1">&#39;CM&#39;</span><span class="p">,</span><span class="s1">&#39;Alex&#39;</span><span class="p">,</span><span class="s1">&#39;Tong&#39;</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;banana&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">person</span> <span class="p">,</span>  <span class="s2">&quot;likes to eat &quot;</span><span class="p">,</span><span class="n">fruit</span><span class="p">)</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">,</span><span class="s2">&quot; favorite fruit listed above!&quot;</span>  <span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We all like to eat fruit!!! &quot;</span><span class="p">)</span>   
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x=&#39;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;we are here y=&#39;</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span> <span class="c1">#猜看看這行在幹嘛？   </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="for-loop-enumerate">
+<h2>for loop 中，使用enumerate() 可以自動加入索引<a class="headerlink" href="#for-loop-enumerate" title="Permalink to this heading">#</a></h2>
+<section id="enumerate">
+<h3>* enumerate() 函數<a class="headerlink" href="#enumerate" title="Permalink to this heading">#</a></h3>
+<p>enumerate多用於在for循環中得到計數，利用它可以同時獲得索引和值</p>
+</section>
+<section id="split">
+<h3>* split()函數用法<a class="headerlink" href="#split" title="Permalink to this heading">#</a></h3>
+<p>語法：str.split(str=””,num=string.count(str))<span class="xref myst">n</span></p>
+<p>str:表示為分隔符，預設為空格。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stalist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;OT-OT01&quot;</span><span class="p">,</span><span class="s2">&quot;OT-OT03&quot;</span><span class="p">,</span><span class="s2">&quot;OT-OT04&quot;</span><span class="p">,</span><span class="s2">&quot;OT-OT05&quot;</span><span class="p">,</span><span class="s2">&quot;OT-OT06&quot;</span><span class="p">,</span><span class="s2">&quot;OT-OT07&quot;</span><span class="p">,</span><span class="s2">&quot;OT-OT11&quot;</span><span class="p">,</span><span class="s2">&quot;OT-OT12&quot;</span><span class="p">,</span>\
+<span class="s2">&quot;OT-OT13&quot;</span><span class="p">,</span><span class="s2">&quot;OT-OT14&quot;</span><span class="p">,</span><span class="s2">&quot;OT-OT16&quot;</span><span class="p">,</span><span class="s2">&quot;OT-OT19&quot;</span><span class="p">,</span><span class="s2">&quot;OT-OT20&quot;</span><span class="p">,</span><span class="s2">&quot;OT-OT21&quot;</span><span class="p">,</span><span class="s2">&quot;OT-OT24&quot;</span><span class="p">,</span><span class="s2">&quot;OT-OT25&quot;</span><span class="p">,</span><span class="s2">&quot;OT-OT27&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="n">STAinfo</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">stalist</span><span class="p">):</span>
+    <span class="n">stn</span> <span class="o">=</span> <span class="n">STAinfo</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">network</span> <span class="o">=</span> <span class="n">STAinfo</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span><span class="n">network</span><span class="p">,</span> <span class="n">stn</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="while-loops">
+<h2><code class="docutils literal notranslate"><span class="pre">while</span></code> loops:<a class="headerlink" href="#while-loops" title="Permalink to this heading">#</a></h2>
+<p>while 是一種無限次數的循環。概念有點像紅綠燈。</p>
+<p>如果條件判斷是True，就是綠燈，就做包在裡頭的指令。
+如果回來還是綠燈，就再繞一圈，無限循環；
+如果條件判斷是False，就是紅燈，就立刻跳出圈圈，不繞了。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;done&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="control-flow-statements">
+<h1>Control Flow Statements<a class="headerlink" href="#control-flow-statements" title="Permalink to this heading">#</a></h1>
+<section id="if">
+<h2>if<a class="headerlink" href="#if" title="Permalink to this heading">#</a></h2>
+<p>if some_condition:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>algorithm
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span><span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;GOOD&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span><span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;GOOD&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="if-else">
+<h2>If-else<a class="headerlink" href="#if-else" title="Permalink to this heading">#</a></h2>
+<p>if some_condition:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>algorithm
+</pre></div>
+</div>
+<p>else:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>algorithm
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;GOOD&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;BAD&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="if-elseif-else">
+<h2>If-elseif-else<a class="headerlink" href="#if-elseif-else" title="Permalink to this heading">#</a></h2>
+<p>if some_condition:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>algorithm
+</pre></div>
+</div>
+<p>elif some_condition:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>algorithm
+</pre></div>
+</div>
+<p>else:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>algorithm
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x&gt;y&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x&lt;y&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x=y&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id6">
+<h2><font color=#EE7700> In-calss exercise </font><a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<p>請用for loop 依序把測站名print out出來  OT_OT01 其中OT 是network code, OT01是測站名</p>
+<p>如果碰到測站名為OT05 或 OT25 請print out “this is a TORI OBS”</p>
+<p>其他測站請print out “this is an IES OBS”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stalist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;OT_OT01&quot;</span><span class="p">,</span><span class="s2">&quot;OT_OT03&quot;</span><span class="p">,</span><span class="s2">&quot;OT_OT04&quot;</span><span class="p">,</span><span class="s2">&quot;OT_OT05&quot;</span><span class="p">,</span><span class="s2">&quot;OT_OT06&quot;</span><span class="p">,</span><span class="s2">&quot;OT_OT07&quot;</span><span class="p">,</span><span class="s2">&quot;OT_OT11&quot;</span><span class="p">,</span><span class="s2">&quot;OT_OT12&quot;</span><span class="p">,</span>\
+<span class="s2">&quot;OT_OT13&quot;</span><span class="p">,</span><span class="s2">&quot;OT_OT14&quot;</span><span class="p">,</span><span class="s2">&quot;OT_OT16&quot;</span><span class="p">,</span><span class="s2">&quot;OT_OT19&quot;</span><span class="p">,</span><span class="s2">&quot;OT_OT20&quot;</span><span class="p">,</span><span class="s2">&quot;OT_OT21&quot;</span><span class="p">,</span><span class="s2">&quot;OT_OT24&quot;</span><span class="p">,</span><span class="s2">&quot;OT_OT25&quot;</span><span class="p">,</span><span class="s2">&quot;OT_OT27&quot;</span><span class="p">]</span>
+
+<span class="c1"># write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="objectives">
+<h1><code class="docutils literal notranslate"><span class="pre">Objectives</span></code>: 從觀測資料回歸得到海床的深度與其板塊年齡的平方根的關係<a class="headerlink" href="#objectives" title="Permalink to this heading">#</a></h1>
+<section id="step0-filename-waterdepth-age2-csv-pd-read-csv">
+<h2>step0: 請將檔案,filename = “WaterDepth_age2.csv”,內容用pd.read_csv正確讀入？<a class="headerlink" href="#step0-filename-waterdepth-age2-csv-pd-read-csv" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step1-age-depth">
+<h2>step1: 畫出橫軸為age,縱軸為depth的圖。<a class="headerlink" href="#step1-age-depth" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="20221024_FUN02.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to scientific computing with Python</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction to scientific computing with Python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-algebra-using-numpy-array">(1) matrix algebra using numpy.array</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-linear-regression">(2) simple linear regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops-and-if">(3) Loops and if</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sources">Sources</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-the-jupyter-notebook-in-jupyter-lab">NOTE: the Jupyter notebook in Jupyter Lab</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#import-1-module-in-python">Import 1 module 新增模組 in python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-800000-recap-1-numpy-font-multidimensional-data-arrays"><font color="#800000"> RECAP 模組#1 numpy  </font> - multidimensional data arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-we-need-to-use-numpy-how-can-we-import-it-as-np"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/> we need to use numpy , how can we import it as np</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-800000-recap-2-matplotlib-pyplot-font-plot-y-versus-x-as-lines-and-or-markers"><font color="#800000"> RECAP 模組#2 <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> 中的 pyplot </font> - Plot y versus x as lines and/or markers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-we-need-to-use-matplotlib-pyplot-how-can-we-import-it-as-plt"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/> we need to use matplotlib.pyplot , how can we import it as plt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><font color="#800000"> RECAP 模組#1 numpy  </font> - multidimensional data arrays</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-please-use-numpy-arry-to-generate-a-matrix-m"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/> please use numpy arry to generate a matrix, M</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-reminder">A reminder:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-this-class-we-use-np-array-https-numpy-org-doc-stable-reference-generated-numpy-array-html">* in this class, we use np.array  (https://numpy.org/doc/stable/reference/generated/numpy.array.html)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#we-are-not-using-np-matrix-in-this-class-https-numpy-org-doc-stable-reference-generated-numpy-matrix-html">* we are not using np.matrix in this class (https://numpy.org/doc/stable/reference/generated/numpy.matrix.html)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-matrix-m-dimemtion"><font color="#ff00ff"> Your turn: </font> 請查看看 matrix M 的dimemtion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-provides-many-convenience-functions-for-creating-matrices-vectors">NumPy provides many convenience functions for creating matrices/vectors.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#np-zeros-return-a-new-array-of-given-shape-filled-with-0">* np.zeros: Return a new array of given shape, filled with 0.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-python-array-b-array-c"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/> 請問在python 定義，array b 和 array c 的矩陣大小會怎描述？</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#np-ones-return-a-new-array-of-given-shape-filled-with-ones">* np.ones:  Return a new array of given shape, filled with ones.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#np-identity-return-the-identity-array">* np.identity:  Return the identity array.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-np-identity-5"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/> 請先想想，如果下 np.identity(5) 會出現怎樣的矩陣？</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#np-full-return-a-new-array-of-given-shape-filled-with-fill-value">* np.full:  Return a new array of given shape, filled with fill_value.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#np-diag-construct-a-diagonal-array-with-the-values">* np.diag:  construct a diagonal array with the values.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-712-10x10-w"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/> 如何產生一個對角線都是 712 的 10x10矩陣, W？</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-array-generate-a-matrix-m-way-2">Numpy array : generate a matrix M: way#2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#we-can-also-create-v1-v2-v3-by-vector-and-then-use-np-vstack">* we can also create v1,v2,v3 by vector and then use <code class="docutils literal notranslate"><span class="pre">np.vstack</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ee7700-in-calss-exercise-font"><font color="#EE7700"> In-calss exercise </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#please-set-2-np-arrays-m-and-v">please set 2 np-arrays, M and v</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#np-dot-dot-product-of-two-arrays-specifically">* np.dot: Dot product of two arrays. Specifically,</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication"><code class="docutils literal notranslate"><span class="pre">Matrix</span> <span class="pre">Multiplication</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-np-dot-way-1">using np.dot way #1:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-np-dot-way-2">using np.dot way #2:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transpose-of-matrix"><code class="docutils literal notranslate"><span class="pre">transpose</span> <span class="pre">of</span> <span class="pre">Matrix</span> </code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-ndarray-t-the-transposed-array">* numpy.ndarray.T: The transposed array.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-determinant"><code class="docutils literal notranslate"><span class="pre">Matrix</span> <span class="pre">Determinant</span> <span class="pre">行列式</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-linalg-det-a-compute-the-determinant-of-an-array">* numpy.linalg.det(a): Compute the determinant of an array</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-of-a-matrix"><code class="docutils literal notranslate"><span class="pre">Inverse</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">matrix</span>  </code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#np-linalg-inv-compute-the-multiplicative-inverse-of-a-matrix">* np.linalg.inv: Compute the (multiplicative) inverse of a matrix.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#please-generate-a-matrix-mathbf-a-begin-bmatrix-7-2-10-3-end-bmatrix">please generate a matrix $<span class="math notranslate nohighlight">\( \mathbf A  = \begin{bmatrix} 7 &amp; 2 \\ 10 &amp; 3  \end{bmatrix}\)</span>$</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><font color="#EE7700"> In-calss exercise </font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#please-write-a-python-code-to-get">please write a python code to get</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-800000-recap-3-pandas-font-data-analysis-and-manipulation-tool"><font color="#800000"> RECAP 模組#3 pandas </font> - data analysis and manipulation tool</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-we-need-to-use-pandas-how-can-we-import-it-as-pd"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/> we need to use pandas, how can we import it as pd</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-466910-2022-09-csv-pandas-pd-dataframe"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/> 請將466910-2022-09.csv 用 pandas 讀進來成一個變數名為 pd 的dataframe</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-data-table-representation">pandas data table representation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ee7700-2022-10-31-in-calss-exercise-font"><font color="#EE7700"> 2022/10/31 In-calss exercise  </font></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-figure-with-one-pannl">(1) make a figure with one pannl</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-temperature-tmax-in-x-y-scatter-plot">(2) plot (Temperature, Tmax) in x-y scatter plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-font-color-800000-recap-font-how-can-we-get-the-temperature-values"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/> <font color="#800000"> RECAP: </font>  how can we get the ‘Temperature’ values?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-now-how-can-we-set-the-values-in-these-2-columns-temperature-t-max-as-2-numpy-arrays-temp-and-tmax"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/> now,   how can we set the values in these 2 columns, <code class="docutils literal notranslate"><span class="pre">Temperature</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">Max</span></code> as 2 numpy arrays, Temp and Tmax？</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-regression">Simple Regression</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#over-determined-problem">over-determined  problem :</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#center-the-least-squares-solution-center"><center>The least squares solution </center></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#img-src-attachment-fdafc9d6-69b5-436a-b93f-37104456df84-png-width-40px-mathbf-g-begin-bmatrix-1-x-1-1-x-2-vdots-vdots-1-x-n-end-bmatrix"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/>如何產生 $<span class="math notranslate nohighlight">\( \mathbf G  = \begin{bmatrix} 1 &amp; x_1 \\ 1 &amp; x_2  \\ \vdots  &amp; \vdots \\ 1 &amp; x_n  \end{bmatrix}\)</span>$</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><img src="attachment:fdafc9d6-69b5-436a-b93f-37104456df84.png" width="40px"/>如何可以變成 $<span class="math notranslate nohighlight">\( \mathbf G  = \begin{bmatrix} 1 &amp; x_1 \\ 1 &amp; x_2  \\ \vdots  &amp; \vdots \\ 1 &amp; x_n  \end{bmatrix}\)</span>$</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-similary-please-write-d-matrix"><font color="#ff00ff"> Your turn: </font> similary, please write d matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><center>The least squares solution  </center></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-ff00ff-your-turn-font-please-get-m"><font color="#ff00ff"> Your turn: </font>  please get m</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-regression-line">PLOT regression line</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step1">step1:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step2">step2:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step3">step3:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step4">step4:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step5">step5:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step6">step6:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-summary">In summary</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#loops">Loops 迴圈</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loops"><code class="docutils literal notranslate"><span class="pre">for</span></code> loops:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loop">單層 for-loop:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">巢狀for-loop</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loop-enumerate">for loop 中，使用enumerate() 可以自動加入索引</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enumerate">* enumerate() 函數</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split">* split()函數用法</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-loops"><code class="docutils literal notranslate"><span class="pre">while</span></code> loops:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#control-flow-statements">Control Flow Statements</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if">if</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-else">If-else</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-elseif-else">If-elseif-else</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><font color="#EE7700"> In-calss exercise </font></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives"><code class="docutils literal notranslate"><span class="pre">Objectives</span></code>: 從觀測資料回歸得到海床的深度與其板塊年齡的平方根的關係</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step0-filename-waterdepth-age2-csv-pd-read-csv">step0: 請將檔案,filename = “WaterDepth_age2.csv”,內容用pd.read_csv正確讀入？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step1-age-depth">step1: 畫出橫軸為age,縱軸為depth的圖。</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ui-Ho Ang, Terry
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

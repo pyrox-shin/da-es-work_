@@ -1,0 +1,9 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: pythonFUN_01.ipynb
+- file: 20221024_FUN02.ipynb
+- file: 20221107_FUN04_real.ipynb
